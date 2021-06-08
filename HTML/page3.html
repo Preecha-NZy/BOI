@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CSS/page3.css">
     <script src="/JAVASCRIPT/page3.js" defer></script>
@@ -48,227 +49,90 @@
         </ul>
         <div class="tab-content">
             <div id="tab1" data-tab-content class="active">
-                <table class="page1">
-                    <thead>
-                        <tr>
-                            <th style="width: 25%;">เงื่อนไขโครงการ</th>
-                            <th style="width: 35%;">กรอกข้อมูลบริษัท</th>
-                            <th style="width: 25%;">รายละเอียด</th>
-                            <th style="width: 20%;">เอกสารแนบ</th>
-                        </tr>
-                    </thead>
-    
-                    <tbody class="content-body">
-                        <tr>
-                            <td>
-                                ผลิตภัณฑ์ของโครงการที่จะขอรับการส่งเสริม
-                            </td>
-                            <td>
-                                <label for="power-source"></label>
-                                <select name="power-source" id="power-source" >
-                                    <option value="" disabled selected> เลือก </option>
-                                    <option value="ไฟฟ้าจากพลังงานแสงอาทิตย์">ไฟฟ้าจากพลังงานแสงอาทิตย์</option>
-                                </select>
-                            </td>
-                            <td>
-                                <label>-</label>
-                            </td>
-                            <td>
-                                <label>-</label>
-                            </td>
-                        </tr>
+                <div class="main-content">
+                    <label class="content-label">ผลิตภัณฑ์ของโครงการที่จะขอรับการส่งเสริม</label>
+                    <label for="power-source"></label>
+                    <select name="power-source" id="power-source" >
+                        <option value="" disabled selected> เลือก </option>
+                        <option value="ไฟฟ้าจากพลังงานแสงอาทิตย์">ไฟฟ้าจากพลังงานแสงอาทิตย์</option>
+                    </select>
+                </div>
 
-                        <tr>
-                            <td>
-                                กำลังผลิตของโครงการที่จะขอรับการส่งเสริม
-                            </td>
-                            <td>
-                                <input type="number" id="production-promote" name="production-promote" min="0">
-                                <label for="production-promote">MWp</label>
-                            </td>
-                            <td>
-                                <label>จะต้องสอดคล้องกับสัญญา</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                        </tr>
+                <div class="main-content">
+                    <label for="" class="content-label">กำลังผลิตของโครงการที่จะขอรับการส่งเสริม</label>
+                    <input type="number" id="production-promote" name="production-promote" min="0">
+                    <label for="production-promote" class="number-of-page">MWp</label>
+                </div>
 
-                        <tr>
-                            <td>
-                                บริษัทคู่สัญญาซื้อขายไฟฟ้า
-                            </td>
-                            <td>
-                                <label for="company-name">บริษัท</label>
-                                <input type="text" name="co-company-name" id="company-name">
-                            </td>
-                            <td>
-                                <label for="number1">ข้อมูลดังกล่าวอยู่ในสัญญาหน้าที่</label>
-                                <input type="number" name="page1" min="0" id="number1" class="row-3-col-3">
-                            </td>
-                            <td>
-                                <label>-</label>
-                            </td>
-                        </tr>
+                <div class="main-content">
+                    <label for="" class="content-label">บริษัทคู่สัญญาซื้อขายไฟฟ้า</label>
+                    <label for="company-name"></label>
+                    <input type="text" name="co-company-name" id="company-name">
+                    <label for="number1">ข้อมูลดังกล่าวอยู่ในสัญญาหน้าที่</label>
+                    <input type="number" name="page1" min="0" id="number1" class="row-3-col-3">
+                </div>
 
-                        <tr>
-                            <td>
-                                กำลังผลิตติดตั้งตามสัญญาซื้อขายไฟ
-                            </td>
-                            <td>
-                                <input type="number" name="production-agreement" min="0" id="production-agreement">
-                                <label for="production-agreement">MWp</label>
-                            </td>
-                            <td>
-                                <label for="number2">ข้อมูลดังกล่าวอยู่ในสัญญาหน้าที่</label>
-                                <input type="number" name="page2" min="0" id="number2" class="row-3-col-3">
-                            </td>
-                            <td>
-                                <label>-</label>
-                            </td>
-                        </tr>
+                <div class="main-content">
+                    <label for="" class="content-label">กำลังผลิตติดตั้งตามสัญญาซื้อขายไฟ</label>
+                    <input type="number" name="production-agreement" min="0" id="production-agreement">
+                    <label for="production-agreement" class="number-of-page">MWp</label>
+                    <label for="number2">ข้อมูลดังกล่าวอยู่ในสัญญาหน้าที่</label>
+                    <input type="number" name="page2" min="0" id="number2" class="row-3-col-3">
+                </div>
 
-                        <tr>
-                            <td>
-                                สถานที่ติดตั้งตามสัญญา
-                            </td>
-                            <td>
-                                <label for="installation-site"></label>
-                                <select name="installation-site" id="installation-site">
-                                    <option value="" disabled selected> เลือก </option>
-                                    <option value="ติดตั้งบนหลังคา">ติดตั้งบนหลังคา</option>
-                                    <option value="ติดตั้งบนพื้นดิน">ติดตั้งบนพื้นดิน</option>
-                                    <option value="ติดตั้งบนทุ่นลอยน้ำ">ติดตั้งบนทุ่นลอยน้ำ</option>
-                                    <option value="อื่นๆ">อื่นๆ</option>
-                                </select>
-                            </td>
-                            <td>
-                                <label for="number3">ข้อมูลดังกล่าวอยู่ในสัญญาหน้าที่</label>
-                                <input type="number" name="page3" min="0" id="number3" class="row-3-col-3">
-                            </td>
-                            <td>
-                                <label>-</label>
-                            </td>
-                        </tr>
+                <div class="main-content">
+                    <label for="" class="content-label">สถานที่ติดตั้งตามสัญญา</label>
+                    <label for="number3">ข้อมูลดังกล่าวอยู่ในสัญญาหน้าที่</label>
+                    <input type="number" name="page3" min="0" id="number3" class="row-3-col-3">
+                </div>
 
-                        <tr>
-                            <td>
-                                ลักษณะการติดตั้ง
-                            </td>
-                            <td>
-                                <label for="install-detail"></label>
-                                <input type="text" name="install-detail" id="install-detail">
-                            </td>
-                            <td>
-                                <label >-</label>
-                            </td>
-                            <td>
-                                <label>-</label>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br>
+                <div class="main-content">
+                    <label for="" class="content-label">ลักษณะการติดตั้ง</label>
+                    <select name="installation-site" id="installation-site">
+                        <option value="" disabled selected> เลือก </option>
+                        <option value="ติดตั้งบนหลังคา">ติดตั้งบนหลังคา</option>
+                        <option value="ติดตั้งบนพื้นดิน">ติดตั้งบนพื้นดิน</option>
+                        <option value="ติดตั้งบนทุ่นลอยน้ำ">ติดตั้งบนทุ่นลอยน้ำ</option>
+                        <option value="อื่นๆ">อื่นๆ</option>
+                    </select>
+                </div>
                 <div class="btn">
                     <a href="page3.html"> ต่อไป</a>
                 </div>
             </div>
     
             <div id="tab2" data-tab-content>
-                <table class="page2">
-                    <thead>
-                        <tr>
-                            <th style="width: 25%;">เงื่อนไขโครงการ</th>
-                            <th style="width: 35%;">กรอกข้อมูลบริษัท</th>
-                            <th style="width: 25%;">รายละเอียด</th>
-                            <th style="width: 20%;">เอกสารแนบ</th>
-                        </tr>
-                    </thead>
+                <div class="main-content">
+                    <label for="" class="content-label">รุ่นของแผงเซลล์แสงอาทิตย์</label>
+                    <label for="brand">แบรนด์</label>
+                    <input type="text" name="brand" id="brand">
+                    <label for="generation">รุ่น</label>
+                    <input type="text" name="generation" id="generation">
+                </div>
 
-                    <tbody class="content-body">
-                        <tr>
-                            <td>
-                                รุ่นของแผงเซลล์แสงอาทิตย์
-                            </td>
-                            <td>
-                                <label for="brand">แบรนด์</label>
-                                <input type="text" name="brand" id="brand">
-                                <label for="generation">รุ่น</label>
-                                <input type="text" name="generation" id="generation">
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td>
-                                ชนิดของแผงเซลล์แสงอาทิตย์
-                            </td>
-                            <td>
-                                <label for="solar-type"></label>
-                                <input type="text" name="solar-type" id="solar-type">
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td>
-                                กำลังผลิตของแผงเซลล์แสงอาทิตย์
-                            </td>
-                            <td>
-                                <input type="number" name="solar-power-unit" id="solar-power-unit">
-                                <label for="solar-power-unit">watt/unit</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td>
-                                จำนวนของแผงเซลล์แสงอาทิตย์
-                            </td>
-                            <td>
-                                <input type="number" name="solar-number" id="solar-number">
-                                <label for="solar-number">unit</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                        </tr>
-                    
-                        <tr>
-                            <td>
-                                กำลังผลิตติดตั้งรวมของแผงเซลล์แสงอาทิตย์
-                            </td>
-                            <td>
-                                <input type="number" name="solar-power-total" id="solar-power-total">
-                                <label for="solar-power-total">MWp</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="main-content">
+                    <label for="" class="content-label">ชนิดของแผงเซลล์แสงอาทิตย์</label>
+                    <label for="solar-type"></label>
+                    <input type="text" name="solar-type" id="solar-type">
+                </div>
+
+                <div class="main-content">
+                    <label for="" class="content-label">กำลังผลิตของแผงเซลล์แสงอาทิตย์</label>
+                    <input type="number" name="solar-power-unit" id="solar-power-unit">
+                    <label for="solar-power-unit">watt/unit</label>
+                </div>
+
+                <div class="main-content">
+                    <label for="" class="content-label">จำนวนของแผงเซลล์แสงอาทิตย์</label>
+                    <input type="number" name="solar-number" id="solar-number">
+                    <label for="solar-number">unit</label>
+                </div>
+
+                <div class="main-content">
+                    <label for="" class="content-label">กำลังผลิตติดตั้งรวมของแผงเซลล์แสงอาทิตย์</label>
+                    <input type="number" name="solar-power-total" id="solar-power-total">
+                    <label for="solar-power-total">MWp</label>
+                </div>
                 <br>
                 <div class="btn">
                     <a href="page3.html"> ต่อไป</a>
@@ -276,179 +140,77 @@
             </div>
     
             <div id="tab3" data-tab-content>
-                <table class="page3">
-                    <thead>
-                        <tr>
-                            <th style="width: 25%;">เงื่อนไขโครงการ</th>
-                            <th style="width: 35%;">กรอกข้อมูลบริษัท</th>
-                            <th style="width: 25%;">รายละเอียด</th>
-                            <th style="width: 20%;">เอกสารแนบ</th>
-                        </tr>
-                    </thead>
-                    <tbody class="content-body">
-                        <tr>
-                            <td>
-                                รุ่นของ INVERTER
-                            </td>
-                            <td>
-                                <label for="brand1">แบรนด์</label>
-                                <input type="text" name="brand" id="brand1">
-                                <label for="generation1">รุ่น</label>
-                                <input type="text" name="generation" id="generation1">
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                        </tr>
+                <div class="main-content">
+                    <label for="" class="content-label">รุ่นของ INVERTER</label>
+                    <label for="brand1">แบรนด์</label>
+                    <input type="text" name="brand" id="brand1">
+                    <label for="generation1">รุ่น</label>
+                    <input type="text" name="generation" id="generation1">
+                </div>
 
-                        <tr>
-                            <td>
-                                ชนิดของ INVERTER
-                            </td>
-                            <td>
-                                <label for="solar-type1"></label>
-                                <input type="text" name="solar-type" id="solar-type1">
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                        </tr>
+                <div class="main-content">
+                    <label for="" class="content-label">ชนิดของ INVERTER</label>
+                    <label for="solar-type1"></label>
+                    <input type="text" name="solar-type" id="solar-type1">
+                </div>
 
-                        <tr>
-                            <td>
-                                กำลังผลิตของ INVERTER
-                            </td>
-                            <td>
-                                <input type="number" name="solar-power-unit" id="solar-power-unit1">
-                                <label for="solar-power-unit1">watt/unit</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                        </tr>
+                <div class="main-content">
+                    <label for="" class="content-label">กำลังผลิตของ INVERTER</label>
+                    <input type="number" name="solar-power-unit" id="solar-power-unit1">
+                    <label for="solar-power-unit1">watt/unit</label>
+                </div>
 
-                        <tr>
-                            <td>
-                                จำนวนของ INVERTER
-                            </td>
-                            <td>
-                                <input type="number" name="solar-number" id="solar-number1">
-                                <label for="solar-number1">unit</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                        </tr>
+                <div class="main-content">
+                    <label for="" class="content-label">จำนวนของ INVERTER</label>
+                    <input type="number" name="solar-number" id="solar-number1">
+                    <label for="solar-number1">unit</label>
+                </div>
 
-                        <tr>
-                            <td>
-                                กำลังผลิตรวมของ INVERTER
-                            </td>
-                            <td>
-                                <input type="number" name="solar-power-total" id="solar-power-total1">
-                                <label for="solar-power-total1">MWp</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="main-content">
+                    <label for="" class="content-label">กำลังผลิตรวมของ INVERTER</label>
+                    <input type="number" name="solar-power-total" id="solar-power-total1">
+                    <label for="solar-power-total1">MWp</label>
+                </div>
                 <br>
                 <div class="btn">
                     <a href="page3.html"> ต่อไป</a>
                 </div>
             </div>
-    
+
             <div id="tab4" data-tab-content>
-                <table class="page4">
-                    <thead>
-                        <tr>
-                            <th>รายละเอียด</th>
-                            <th>กรอกข้อมูลบริษัท</th>
-                        </tr>
-                    </thead>
+                <div class="main-content">
+                    <label for="" class="content-label">เอกสารแนบงบการเงิน</label>
+                </div>
 
-                    <tbody class="content-body">
-                        <tr>
-                            <td>
-                                เอกสารแนบงบการเงิน
-                            </td>
-                            <td>
-                                <label for="">-</label>
-                            </td>
-                        </tr>
+                <div class="main-content">
+                    <label for="" class="content-label">สินทรัพย์</label>
+                    <input type="number" name="asset" id="asset">
+                </div>
 
-                        <tr>
-                            <td>
-                                สินทรัพย์
-                            </td>
-                            <td>
-                                <input type="number" name="asset" id="asset">
-                            </td>
-                        </tr>
+                <div class="main-content">
+                    <label for="" class="content-label">หนี้สิน</label>
+                    <input type="number" name="debt" id="debt">
+                </div>
 
-                        <tr>
-                            <td>
-                                หนี้สิน
-                            </td>
-                            <td>
-                                <input type="number" name="debt" id="debt">
-                            </td>
-                        </tr>
+                <div class="main-content">
+                    <label for="" class="content-label">ส่วนของผู้ถือหุ้น</label>
+                    <input type="number" name="number-of-equity" id="number-of-equity">
+                </div>
 
-                        <tr>
-                            <td>
-                                ส่วนของผู้ถือหุ้น
-                            </td>
-                            <td>
-                                <input type="number" name="number-of-equity" id="number-of-equity">
-                            </td>
-                        </tr>
+                <div class="main-content">
+                    <label for="" class="content-label">ทุนจดทะเบียน</label>
+                    <input type="number" name="registered-capital" id="registered-capital">
+                </div>
 
-                        <tr>
-                            <td>
-                                ทุนจดทะเบียน
-                            </td>
-                            <td>
-                                <input type="number" name="registered-capital" id="registered-capital">
-                            </td>
-                        </tr>
+                <div class="main-content">
+                    <label for="" class="content-label">กำไร (ขาดทุน) สะสม</label>
+                    <input type="number" name="profit-accumulated" id="profit-accumulated">
+                </div>
 
-                        <tr>
-                            <td>
-                                กำไร (ขาดทุน) สะสม
-                            </td>
-                            <td>
-                                <input type="number" name="profit-accumulated" id="profit-accumulated">
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                อื่น ๆ
-                            </td>
-                            <td>
-                                <input type="tel" name="etc" id="etc">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="main-content">
+                    <label for="" class="content-label">อื่น ๆ</label>
+                    <input type="tel" name="etc" id="etc">
+                </div>
                 <br>
                 <div class="btn">
                     <a href="page3.html"> ต่อไป</a>
