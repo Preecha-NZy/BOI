@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/CSS/page1.css">
+    <link rel="stylesheet" href="../CSS/page1.css">
     <link rel="stylesheet" href="/font/simplelineicons.github.io-master/simplelineicons.github.io-master/css/simple-line-icons.css">
+    <script src="../JAVASCRIPT/page1.js" defer></script>
     <title>BOI</title>
 </head>
 <body>
@@ -40,27 +41,28 @@
                 </label>
             </div>
             <div class="mc-rad">
+                <script></script>
                 <label class="rad-label">
-                    <input type="radio" class="rad-input" name="rad">
+                    <input type="radio" class="rad-input" name="rad" value="rad1" id="rad1">
                     <div class="rad-design"></div>
                     <div class="rad-text">มาตรการทั่วไป</div>
                 </label>
               
                 <label class="rad-label">
-                    <input type="radio" class="rad-input" name="rad">
+                    <input type="radio" class="rad-input" name="rad" value="rad2" id="rad2">
                     <div class="rad-design"></div>
                     <div class="rad-text">มาตรการ SMEs</div>
                 </label>
               
                 <label class="rad-label">
-                    <input type="radio" class="rad-input" name="rad">
+                    <input type="radio" class="rad-input" name="rad" value="rad3" id="rad3">
                     <div class="rad-design"></div>
                     <div class="rad-text">กิจการประเภท 7.1.1.2</div>
                 </label>
             </div>
         </div>
-        <div class="btn">
-            <a href="page2.html"> ต่อไป</a>
+        <div class="btn" onclick="checkButton()">
+            <a>ต่อไป</a>
         </div>
     </div>
 </body>
