@@ -72,7 +72,7 @@ header {
     display: none;
 }
 .active[data-tab-content] {
-    padding-left: 50px;
+    padding-left: 100px;
     padding-right: 50px;
     margin-top: 40px;
     display: flex;
@@ -84,196 +84,198 @@ header {
     display: flex;
     align-items: baseline;
     list-style-type: none;
-    overflow: hidden;
     width: 100%;
-    height: 64px;
+    height: 44px;
     border-bottom: 0.1px solid #ccc;
 }
 .tab {
     position: relative;
-    left: -2px;
     cursor: pointer;
     padding: 10px;
-    margin-top: 20px;
 }
 .tab.active {
+    position: relative;
+    background-color: rgba(214, 214, 214, 0.336);
     border: 0.1px solid #ccc;
-    border-bottom: 5px solid white;
-    border-radius: 5px;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    border-radius: 5px 5px 0 0;
+    z-index: 2;
     box-sizing: content-box;
-    z-index: 20;
 }
 .tab:hover {
-    background-color: #AAA;
+    background-color: rgba(196, 194, 194, 0.336);
 }
 
 .content {
+    padding: 20px 0;
     margin: 5px 10px 0;
     background-color: white;
-    height: 500px;
-    max-height: 500px;
+    height: fit-content;
 }
 .main-content {
     display: flex;
     height: 25px;
-    /* border: 2px solid green; */
     align-items: center;
     margin-bottom: 15px;
 }
-label {
-    font-size: 15px;
-    font-weight: 400;
-    
-}
-.content-label {
-    margin-right: 25px;
+.main-content-2 {
     display: flex;
-    justify-content: flex-end;
-    min-width: 300px;
-    width: 300px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.two-content {
+    display: flex;
+    flex-direction: column;
 }
 .number-of-page {
     margin-right: 55px;
 }
+label {
+    font-size: 15px;
+    font-weight: 400;
+}
+
 #power-source {
     padding-left: 5px;
     height: 100%;
-    width: 400px;
+    width: 350px;
 }
 #production-promote {
     height: 100%;
-    width: 353.5px;
+    width: 350px;
     margin-right: 10px;
     padding-left: 5px;
 }
 #company-name {
-    height: 100%;
-    width: 400px;
-    margin-right: 55px;
+    height: 25px;
+    width: 298.3px;
+    margin: 0 0 10px 10px;
     padding-left: 5px;
 }
 #production-agreement {
-    height: 100%;
-    width: 353.5px;
-    margin-right: 10px;
+    height: 25px;
+    width: 350px;
+    margin: 0 10px 10px 0;
     padding-left: 5px;
 }
 #installation-site {
-    height: 100%;
-    width: 400px;
-    margin-right: 55px;
+    height: 25px;
+    width: 350px;
     padding-left: 5px;
+    margin-bottom: 10px;
 }
-#install-detail {
-    height: 100%;
-    width: 400px;
-    margin-right: 55px;
-    padding-left: 5px;
+#area {
+    height: 25px;
 }
-
-#brand {
-    width: 266.5px;
-    height: 100%;
-    margin: 0 10px 0 15px;
-    padding-left: 5px;
+.upload-page1 {
+    height: 25px;
+    width: 350px;
 }
-#generation {
-    width: 325px;
-    height: 100%;
-    margin-left: 15px;
-    padding-left: 5px;
+#tab2 h4 {
+    background-color: #275c90e5;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 8px 15px;
+    border-radius: 5px;
+    width: fit-content;
 }
-#solar-type {
-    height: 100%;
-    width: 325px;
-    padding-left: 5px;
+#tab2 .sup-content {
+    display: flex;
+    margin-bottom: 15px;
 }
-#solar-power-unit {
-    height: 100%;
-    width: 325px;
+.sup-title {
     margin-right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    min-width: 300px;
+    width: 300px;
+    text-align: end;
+}
+#tab2 .sub-content {
+    display: flex;
+    margin-bottom: 5px;
+}
+#tab2 .sub-title {
+    width: 150px;
+    position: relative;
+    top: 0.6px;
+    font-size: 14px;
+}
+.foot-title {
+    margin-left: 10px;
+    font-size: 14px;
+}
+#tab2 .rad-label {
+    width: fit-content;
+    position: relative;
+    top: -6px;
+    padding: 5px;
+    display: flex;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: .3s;
+}
+#tab2 .rad-label:hover {
+    background: rgba(192, 192, 192, 0.185);
+}   
+.rad-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    z-index: -1;
+}
+#tab2 .rad-design {
+    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+    border-radius: 100px;
+    background: #275b90;
+    position: relative;
+}
+#tab2 .rad-design::before {
+    content: '';
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    background: rgb(204, 204, 204);
+    transform: scale(1.1);
+    transition: .3s;
+}
+#tab2 .rad-input:checked+.rad-design::before {
+    transform: scale(0);
+}
+#tab2 .rad-text , .etc{
+    color: gray;
+    margin-left: 14px;
+    /* font-size: 16px;
+    font-weight: 500; */
+    transition: .3s;
+}
+#tab2 .rad-input:checked~.rad-text, .rad-input:checked~.etc{
+    color: black;
+}
+.page2-input {
+    height: 25px;
+    width: 250px;
     padding-left: 5px;
 }
-#solar-number {
-    height: 100%;
-    width: 325px;
-    margin-right: 10px;
-    padding-left: 5px;
+#have-ess {
+    position: relative;
+    top: 3.5px;
+    right: 8px;
+    width: 15px;
+    height: 15px;
 }
-#solar-power-total {
-    height: 100%;
-    width: 325px;
-    margin-right: 10px;
-    padding-left: 5px;
+#have-ess:checked {
+    color: red;
+    background-color: red;
 }
-
-#brand1 {
-    width: 266.5px;
-    height: 100%;
-    margin: 0 10px 0 15px;
-    padding-left: 5px;
-}
-#generation1 {
-    width: 325px;
-    height: 100%;
-    margin-left: 15px;
-    padding-left: 5px;
-}
-#solar-type1 {
-    height: 100%;
-    width: 325px;
-    padding-left: 5px;
-}
-#solar-power-unit1 {
-    height: 100%;
-    width: 325px;
-    margin-right: 10px;
-    padding-left: 5px;
-}
-#solar-number1 {
-    height: 100%;
-    width: 325px;
-    margin-right: 10px;
-    padding-left: 5px;
-}
-#solar-power-total1 {
-    height: 100%;
-    width: 325px;
-    margin-right: 10px;
-    padding-left: 5px;
-}
-
-#asset {
-    height: 100%;
-    width: 400px;
-    padding-left: 5px;
-}
-#debt {
-    height: 100%;
-    width: 400px;
-    padding-left: 5px;
-}
-#number-of-equity {
-    height: 100%;
-    width: 400px;
-    padding-left: 5px;
-}
-#registered-capital {
-    height: 100%;
-    width: 400px;
-    padding-left: 5px;
-}
-#profit-accumulated {
-    height: 100%;
-    width: 400px;
-    padding-left: 5px;
-}
-#etc {
-    height: 100%;
-    width: 400px;
-    padding-left: 5px;
-}
-
 .btn {
     width: fit-content;
     background-color: #4CAF50;
@@ -290,9 +292,12 @@ label {
     color: white;
     text-decoration: none;
 }
+/* input[type="number"] {
+    background-color: red;
+} */
 .row-3-col-3 {
-    height: 100%;
-    margin-left: 10px;
+    height: 25px;
+    margin: 0 0 0 10px;
     padding-left: 5px;
-    width: 70px;
+    width: 138.5px;
 }
