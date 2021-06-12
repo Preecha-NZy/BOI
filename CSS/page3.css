@@ -207,6 +207,10 @@ label {
     margin-left: 10px;
     font-size: 14px;
 }
+.none {
+    pointer-events: none;
+    opacity: 0.6;
+}
 #tab2 .rad-label {
     width: fit-content;
     position: relative;
@@ -286,6 +290,9 @@ label {
     border-radius: 2px;
     margin-left: auto;
     margin-right: auto;
+}
+.btn:hover{
+    cursor: pointer;
 }
 .btn a {
     font-weight: 800;
