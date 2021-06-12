@@ -5,10 +5,7 @@ function checkButton() {
     if (rad3.checked == true) {
         window.location.href = "page2.html";
     }
-    else if(rad1.checked == true) {
-        window.location.href = "page1.html";
-    }
-    else if(rad2.checked == true) {
+    else {
         window.location.href = "page1.html";
     }
 }
