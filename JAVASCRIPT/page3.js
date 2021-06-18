@@ -2,8 +2,6 @@ const tabs = document.querySelectorAll('[data-tab-target]')
 const tabContents = document.querySelectorAll('[data-tab-content]')
 const none = document.querySelectorAll('[none]')
 const gos = document.querySelectorAll('[target]')
-// console.log(tabContents)
-// console.log(tabs)
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
     const target = document.querySelector(tab.dataset.tabTarget)
@@ -22,9 +20,8 @@ gos.forEach(go => {
   go.addEventListener('click', () => {
     console.log(go)
     var x = go.getElementsByTagName('a')[0].id;
-    console.log(x)
-    if(x == 'go-tab3'){
-      var x = "tab3-title"
+    if(x === 'go-tab2'){
+      var x = "tab2-title"
       tabs.forEach (tab => {
         const a = document.querySelector(tab.dataset.tabTarget)
         if(tab.id === x) {
@@ -38,8 +35,8 @@ gos.forEach(go => {
         }
       })
     }
-    else if (x == 'go-tab2') {
-      var x = "tab2-title"
+    else if (x == 'go-tab3') {
+      var x = "tab3-title"
       tabs.forEach (tab => {
         const a = document.querySelector(tab.dataset.tabTarget)
         if(tab.id === x) {
@@ -81,3 +78,10 @@ function haveESS() {
     none[0].classList.add("none")
   }
 }
+
+$.Thailand({
+  $district: $('#district'), // input ของตำบล
+  $amphoe: $('#amphoe'), // input ของอำเภอ
+  $province: $('#province'), // input ของจังหวัด
+  $zipcode: $('#zipcode'), // input ของรหัสไปรษณีย์
+});
