@@ -73,7 +73,7 @@ header {
 }
 .active[data-tab-content] {
     padding-left: 100px;
-    padding-right: 50px;
+    padding-right: 100px;
     margin-top: 40px;
     display: flex;
     flex-direction: column;
@@ -105,72 +105,48 @@ header {
 .tab:hover {
     background-color: rgba(196, 194, 194, 0.336);
 }
-
 .content {
     padding: 20px 0;
     margin: 5px 10px 0;
     background-color: white;
     height: fit-content;
 }
-.main-content {
+#tab1 .sup-content {
     display: flex;
+    margin-bottom: 15px;
+    /* border: 2px solid red; */
+}
+#tab1 .sup-title {
+    min-width: 40%;
+}
+#tab1 .sub-content {
+    display: flex;
+    margin-bottom: 8px;
+    /* border: 2px solid green; */
+}
+#tab1 select {
     height: 25px;
-    align-items: center;
-    margin-bottom: 15px;
+    width: 350px;
+    padding-left: 8px;
 }
-.main-content-2 {
-    display: flex;
-    height: 60px;
-    margin-bottom: 15px;
+#tab1 .sub-content label {
+    margin-right: 10px;
 }
-
-.two-content {
-    display: flex;
-    flex-direction: column;
+#tab1 input {
+    height: 25px;
+    padding-left: 8px;
 }
-.number-of-page {
-    margin-right: 55px;
+#tab1 .address .sub-content  label {
+    width: 46.29px;
+    margin-right: 10px;
+    border: 2px solid red;
+}
+#tab1 .address-input {
+    width: 300px;
 }
 label {
     font-size: 15px;
     font-weight: 400;
-}
-
-#power-source {
-    padding-left: 5px;
-    height: 100%;
-    width: 350px;
-}
-#production-promote {
-    height: 100%;
-    width: 350px;
-    margin-right: 10px;
-    padding-left: 5px;
-}
-#company-name {
-    height: 25px;
-    width: 298.3px;
-    margin: 0 0 10px 10px;
-    padding-left: 5px;
-}
-#production-agreement {
-    height: 25px;
-    width: 350px;
-    margin: 0 10px 10px 0;
-    padding-left: 5px;
-}
-#installation-site {
-    height: 25px;
-    width: 350px;
-    padding-left: 5px;
-    margin-bottom: 10px;
-}
-#area {
-    height: 25px;
-}
-.upload-page1 {
-    height: 25px;
-    width: 350px;
 }
 #tab2 h4 {
     background-color: #275c90e5;
@@ -184,6 +160,7 @@ label {
 #tab2 .sup-content {
     display: flex;
     margin-bottom: 15px;
+    border: 2px solid red;
 }
 .sup-title {
     margin-right: 10px;
@@ -196,6 +173,7 @@ label {
 #tab2 .sub-content {
     display: flex;
     margin-bottom: 5px;
+    border: 2px solid green;
 }
 #tab2 .sub-title {
     width: 150px;
@@ -206,6 +184,9 @@ label {
 .foot-title {
     margin-left: 10px;
     font-size: 14px;
+}
+.none {
+    display: none;
 }
 #tab2 .rad-label {
     width: fit-content;
@@ -287,6 +268,9 @@ label {
     margin-left: auto;
     margin-right: auto;
 }
+.btn:hover{
+    cursor: pointer;
+}
 .btn a {
     font-weight: 800;
     color: white;
@@ -295,9 +279,9 @@ label {
 /* input[type="number"] {
     background-color: red;
 } */
-.row-3-col-3 {
+/* .row-3-col-3 {
     height: 25px;
     margin: 0 0 0 10px;
     padding-left: 5px;
     width: 138.50px;
-}
+} */
