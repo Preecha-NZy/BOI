@@ -137,16 +137,21 @@ header {
     padding-left: 8px;
 }
 #tab1 .address .sub-content  label {
-    width: 46.29px;
+    min-width: 46.29px;
     margin-right: 10px;
-    border: 2px solid red;
 }
 #tab1 .address-input {
-    width: 300px;
+    width: 293.71px;
 }
 label {
     font-size: 15px;
     font-weight: 400;
+}
+#installation-site {
+    height: 25px;
+    width: 350px;
+    padding-left: 5px;
+    margin-bottom: 10px;
 }
 #tab2 h4 {
     background-color: #275c90e5;
