@@ -39,10 +39,24 @@ section {
     opacity: 0;
     border-radius: 50px;
 }
+.checked1 {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: #275b90;
+    opacity: 0;
+    border-radius: 50px;
+}
 .content input:checked + .design .checked {
     transition: transform 0.5s;
     opacity: 1;
     transform: scale(2);
+    background-color: #275b90;
+}
+.content input:checked + .design .checked1 {
+    transition: transform 0.5s;
+    opacity: 1;
+    transform: scale(0.5);
     background-color: #275b90;
 }
 
