@@ -111,6 +111,10 @@ header {
     background-color: white;
     height: fit-content;
 }
+label {
+    font-size: 15px;
+    font-weight: 400;
+}
 #tab1 .sup-content {
     display: flex;
     margin-bottom: 15px;
@@ -118,6 +122,11 @@ header {
 }
 #tab1 .sup-title {
     min-width: 40%;
+    margin-right: 10px;
+    display: flex; 
+    justify-content: flex-end;
+    width: 300px;
+    text-align: end;
 }
 #tab1 .sub-content {
     display: flex;
@@ -130,61 +139,60 @@ header {
     padding-left: 8px;
 }
 #tab1 .sub-content label {
+
     margin-right: 10px;
 }
 #tab1 input {
     height: 25px;
     padding-left: 8px;
 }
-#tab1 .address .sub-content  label {
+#tab1 .address .sub-content label {
     min-width: 46.29px;
     margin-right: 10px;
 }
 #tab1 .address-input {
     width: 293.71px;
 }
-label {
-    font-size: 15px;
-    font-weight: 400;
-}
-#installation-site {
-    height: 25px;
-    width: 350px;
-    padding-left: 5px;
-    margin-bottom: 10px;
-}
 #tab2 h4 {
-    background-color: #275c90e5;
+    background-color: #275b90;
     color: white;
     font-size: 15px;
     font-weight: 700;
     padding: 8px 15px;
     border-radius: 5px;
     width: fit-content;
+    margin-top: 10px;
 }
 #tab2 .sup-content {
     display: flex;
-    margin-bottom: 15px;
-    border: 2px solid red;
+    /* margin-bottom: 15px; */
+    /* border: 2px solid red; */
 }
-.sup-title {
+#tab2 .sup-title {
     margin-right: 10px;
     display: flex;
     justify-content: flex-end;
-    min-width: 300px;
-    width: 300px;
+    min-width: 35%;
     text-align: end;
 }
 #tab2 .sub-content {
     display: flex;
-    margin-bottom: 5px;
-    border: 2px solid green;
+    margin-bottom: 10px;
+    /* border: 2px solid green; */
 }
 #tab2 .sub-title {
     width: 150px;
     position: relative;
-    top: 0.6px;
+    top: 1.6px;
     font-size: 14px;
+}
+.tab2-content {
+    margin-bottom: 25px;
+    display: none;
+}
+.check-box {
+    display: flex;
+    align-items: center;
 }
 .foot-title {
     margin-left: 10px;
@@ -258,11 +266,8 @@ label {
     width: 15px;
     height: 15px;
 }
-#have-ess:checked {
-    color: red;
-    background-color: red;
-}
-.btn {
+
+.btn1 {
     width: fit-content;
     background-color: #4CAF50;
     display: block;
@@ -273,10 +278,10 @@ label {
     margin-left: auto;
     margin-right: auto;
 }
-.btn:hover{
+.btn1:hover{
     cursor: pointer;
 }
-.btn a {
+.btn1 a {
     font-weight: 800;
     color: white;
     text-decoration: none;

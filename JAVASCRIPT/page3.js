@@ -85,3 +85,35 @@ $.Thailand({
   $province: $('#province'), // input ของจังหวัด
   $zipcode: $('#zipcode'), // input ของรหัสไปรษณีย์
 });
+
+
+function is_checked() {
+  var roof = document.getElementById("is-roof")
+  var ground = document.getElementById("is-ground")
+  var water = document.getElementById("is-water")
+  var roof_content = document.getElementsByClassName("is-roof-content")
+  var ground_content = document.getElementsByClassName("is-ground-content")
+  var water_content = document.getElementsByClassName("is-water-content")
+  var content = document.getElementsByClassName("main-equipment")
+  if (roof.checked) {
+    roof_content[0].style.display = 'block'
+  }
+  else {
+    roof_content[0].style.display = 'none'
+  }
+  if (ground.checked) {
+    ground_content[0].style.display = 'block'
+  }
+  else {
+    ground_content[0].style.display = 'none'
+  }
+  if (water.checked) {
+    water_content[0].style.display = 'block'
+  }
+  else {
+    water_content[0].style.display = 'none'
+  }
+  // if (!roof.checked & !ground.checked & !water.checked) {
+  //   content[0].style.display = 'none'
+  // }
+};
