@@ -55,30 +55,48 @@ gos.forEach(go => {
 })
 
 function rad4Checked() {
-  var check = document.getElementById("solar-rad4");
-  if (check.checked) {
-    document.getElementById("solar-rad-etc").disabled = false;
+  var roof_type = document.getElementById("roof_solar_type4");
+  var ground_type = document.getElementById("ground_solar_type4");
+  var pool_type = document.getElementById("pool_solar_type4");
+  if (roof_type.checked) {
+    document.getElementById("roof_type_etc").disabled = false;
   }
   else {
-    document.getElementById("solar-rad-etc").value = "";
-    document.getElementById("solar-rad-etc").disabled = true;
+    document.getElementById("roof_type_etc").disabled = true;
+    document.getElementById("roof_type_etc").value = '';
+  }
+
+  if(ground_type.checked) {
+    document.getElementById('ground_type_etc').disabled = false;
+  }
+  else {
+    document.getElementById('ground_type_etc').disabled = true;
+    document.getElementById('ground_type_etc').value = '';
+  }
+
+
+  if (pool_type.checked) {
+    document.getElementById('pool_type_etc').disabled = false;
+  }
+  else {
+    document.getElementById('pool_type_etc').disabled = true;
+    document.getElementById('pool_type_etc').value = '';
   }
 }
 
 $.Thailand({
   $district: $('#district'), // input ของตำบล
-  $amphoe: $('#amphoe'), // input ของอำเภอ
+  $amphoe: $('#sub_area'), // input ของอำเภอ
   $province: $('#province'), // input ของจังหวัด
-  $zipcode: $('#zipcode'), // input ของรหัสไปรษณีย์
 });
 
 function is_checked() {
   var roof = document.getElementById("is-roof")
   var ground = document.getElementById("is-ground")
-  var water = document.getElementById("is-water")
+  var pool = document.getElementById("is-pool")
   var roof_content = document.getElementsByClassName("is-roof-content")
   var ground_content = document.getElementsByClassName("is-ground-content")
-  var water_content = document.getElementsByClassName("is-water-content")
+  var pool_content = document.getElementsByClassName("is-pool-content")
   var content = document.getElementsByClassName("main-equipment")
   if (roof.checked) {
     roof_content[0].style.display = 'block'
@@ -92,11 +110,11 @@ function is_checked() {
   else {
     ground_content[0].style.display = 'none'
   }
-  if (water.checked) {
-    water_content[0].style.display = 'block'
+  if (pool.checked) {
+    pool_content[0].style.display = 'block'
   }
   else {
-    water_content[0].style.display = 'none'
+    pool_content[0].style.display = 'none'
   }
 };
 
@@ -140,13 +158,13 @@ function addETC() {
   }
 }
 
-function addWaterInput() {
-  let nb_of_solar = document.getElementById('nb-solar-water')
+function addpoolInput() {
+  let nb_of_solar = document.getElementById('nb_pool')
   let nb_solar = document.querySelectorAll('.new-input')
   if (nb_solar.length == 0) {
     for (let i = 1; i <= nb_of_solar.value; i++) {
-      let water = document.querySelector('.is-water-content')
-      let container = water.getElementsByClassName('col-sub-content')
+      let pool = document.querySelector('.is-pool-content')
+      let container = pool.getElementsByClassName('col-sub-content')
       let sub_title = document.createElement('label')
       let sub_content = document.createElement('div')
       let input_surfix = document.createElement('div')
@@ -169,8 +187,8 @@ function addWaterInput() {
   else {
     let nb = nb_solar.length + 1
     for (let i = nb; i <= nb_of_solar.value; i++) {
-      let water = document.querySelector('.is-water-content')
-      let container = water.getElementsByClassName('col-sub-content')
+      let pool = document.querySelector('.is-pool-content')
+      let container = pool.getElementsByClassName('col-sub-content')
       let sub_title = document.createElement('label')
       let sub_content = document.createElement('div')
       let input_surfix = document.createElement('div')
