@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/test.css">
+    <script src="../JAVASCRIPT/test.js" defer></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script> -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript"
+        src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+    <script type="text/javascript"
+        src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+    <link rel="stylesheet"
+        href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
+    <script type="text/javascript"
+        src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div class="hd-left">
+            <img src="https://boi-investment.boi.go.th/img_boi/logo.png" alt="">
+        </div>
+        <div class="hd-right">
+            <i class="icon-bell"></i>
+            <img src="https://boi-investment.boi.go.th/assets/images/avatar-2.png" alt="" class="user-img">
+            <p id="user-name">ปรีชา ชินรนาท</p>
+        </div>
+    </header>
+
+    <section class="title-content">
+        <img src="https://boi-investment.boi.go.th/icon/icon-user-01-01.png" alt="">
+        <div class="title">
+            <h4>
+                ขอรับการส่งเสริมการลงทุนสำหรับกิจการประเภท 7.1.1.2
+            </h4>
+            <h5>
+                ยื่นคำขอรับการส่งเสริม
+            </h5>
+        </div>
+    </section>
+
+    <section class="content">
+        <ul class="tabs">
+            <li data-tab-target="#tab1" class="active tab" id="tab1-title">
+                1.ข้อมูลโครงการและรายละเอียดสัญญาการซื้อขาย
+            </li>
+            <li data-tab-target="#tab2" class="tab" id="tab2-title">
+                2.รายละเอียดระบบผลิตไฟฟ้าจากแสงอาทิตย์
+            </li>
+            <li data-tab-target="#tab3" class="tab" id="tab3-title">
+                3.ปริมาณการผลิตต่อปี
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="tab1" data-tab-content class="active">
+                <div class="sup-content">
+                    <label for="" class="sup-title">ผลิตภัณฑ์ของโครงการที่จะขอรับการส่งเสริม</label>
+                    <div class="col-sub-content">
+                        <div class="row-sub-content">
+                            <select class="form-select form-select-sm" name="power-source" id="power-source">
+                                <option value="" disabled selected> เลือก </option>
+                                <option value="ไฟฟ้าจากพลังงานแสงอาทิตย์">ไฟฟ้าจากพลังงานแสงอาทิตย์</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="sup-content">
+                    <label for="" class="sup-title">บริษัทคู่สัญญาซื้อขายไฟฟ้า</label>
+                    <div class="col-sub-content">
+                        <div class="row-sub-content">
+                            <input type="text" class="form-control form-control-sm" name="" id=""
+                                placeholder="กรอกชื่อบริษัท">
+                        </div>
+                        <div class="row-sub-content">
+                            <input type="number" class="form-control form-control-sm" name="" id="" min="0"
+                                placeholder="กรอกเลขหน้าในสัญญา">
+                        </div>
+                        <div class="row-sub-content">
+                            <input class="form-control form-control-sm" type="file" id="formFile">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="sup-content">
+                    <label for="" class="sup-title">กำลังผลิตติดตั้งตามสัญญาซื้อขายไฟ</label>
+                    <div class="col-sub-content">
+                        <div class="row-sub-content">
+                            <div class="col-5">
+                                <input type="number" name="" id="" class="form-control form-control-sm" min="0"
+                                    placeholder="กรอกกำลังการผลิต (เมกะวัตต์/MWp)">
+                            </div>
+                        </div>
+                        <div class="row-sub-content">
+                            <div class="col-5">
+                                <input type="number" name="" id="" class="form-control form-control-sm" min="0"
+                                    placeholder="กรอกเลขหน้าในสัญญา">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sup-content">
+                    <label for="" class="sup-title">สถานที่ติดตั้งตามสัญญา</label>
+                    <div class="col-sub-content">
+                        <div class="row-sub-content">
+                            <input type="text" name="" id="" class="form-control form-control-sm" placeholder="เลขที่" required>
+                        </div>
+                        <div class="row-sub-content">
+                            <input type="text" name="" id="" class="form-control form-control-sm" placeholder="ถนน">
+                        </div>
+                        <div class="row-sub-content">
+                            <input type="text" name="" id="district" class="form-control form-control-sm"
+                                placeholder="ตำบล">
+                        </div>
+                        <div class="row-sub-content">
+                            <input type="text" name="" id="amphoe" class="form-control form-control-sm"
+                                placeholder="อำเภอ">
+                        </div>
+                        <div class="row-sub-content">
+                            <input type="text" name="" id="province" class="form-control form-control-sm"
+                                placeholder="จังหวัด">
+                        </div>
+                        <div class="row-sub-content">
+                            <input type="number" name="" id="" class="form-control form-control-sm" min="0"
+                                placeholder="กรอกเลขหน้าในสัญญา">
+                        </div>
+                    </div>
+                </div>
+                <div class="btn1" target="#tab2">
+                    <a id="go-tab2" style="color: white;"> ต่อไป</a>
+                </div>
+            </div>
+            <div id="tab2" data-tab-content>
+                <h4>ลักษณะการติดตั้ง</h4>
+                <br>
+                <div class="sup-content">
+                    <label for="" class="sup-title">สถานที่ติดตั้ง</label>
+                    <div class="col-sub-content">
+                        <div class="row-sub-content">
+                            <input type="checkbox" name="installation-site" class="is-check-box form-check-input"
+                                id="is-roof" onclick="is_checked()">
+                            <label for="is-roof" class="install-text" style="margin-left: 8px;">บนหลังคา</label>
+                        </div>
+                        <div class="row-sub-content">
+                            <input type="checkbox" name="installation-site" class="is-check-box form-check-input"
+                                id="is-ground" onclick="is_checked()">
+                            <label for="is-ground" class="install-text" style="margin-left: 8px;"> พื้นดิน</label>
+                        </div>
+                        <div class="row-sub-content">
+                            <input type="checkbox" name="installation-site" class="is-check-box form-check-input"
+                                id="is-water" onclick="is_checked()">
+                            <label for="is-water" class="install-text" style="margin-left: 8px;">ทุ่นลอยน้ำ</label>
+                        </div>
+                    </div>
+                </div>
+                <h4>รายละเอียดอุปกรณ์หลัก</h4>
+                <br>
+                <div class="is-roof-content tab2-content">
+                    <h4 style="background-color: #3c97f1; margin-left: 100px;">รายการอุปกรณ์หลักบนหลังคา</h4>
+                    <br>
+                    <div class="sup-content">
+                        <label for="" class="sup-title">เอกสาร layout การติดตั้งบนหลังคา </label>
+                        <div class="col-sub-content">
+                            <label for="" class="sub-title">แนบเอกสาร</label>
+                            <div class="row-sub-content">
+                                <input type="file" name="solar-upload" id="solar-upload">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sup-content ">
+                        <label for="" class="sup-title">เซลล์แสงอาทิตย์</label>
+                        <div class="col-sub-content">
+                            <label for="" class="sub-title">ลักษณะอาคารที่ติดตั้ง</label>
+                            <div class="row-sub-content">
+                                <select name="" id="">
+                                    <option value="" disabled selected> เลือก </option>
+                                    <option value="">โรงงาน</option>
+                                    <option value="">คลังสินค้า</option>
+                                    <option value="">อื่นๆ(ระบุ)</option>
+                                </select>
+                            </div>
+                            <label for="" class="sub-title">ชนิด</label>
+                            <div class="row-sub-content">
+                                <input type="radio" name="solar-rad" class="rad-input" id="solar-rad1"
+                                    onclick="rad4Checked()">
+                                <label for="solar-rad1" class="rad-text">Monocrystalline</label>
+                            </div>
+                            <div class="row-sub-content">
+                                <input type="radio" name="solar-rad" class="rad-input" id="solar-rad2"
+                                    onclick="rad4Checked()">
+                                <label for="solar-rad2" class="rad-text">Polycrystalline</label>
+                            </div>
+                            <div class="row-sub-content">
+                                <input type="radio" name="solar-rad" class="rad-input" id="solar-rad3"
+                                    onclick="rad4Checked()">
+                                <label for="solar-rad3" class="rad-text">Multicrystalline</label>
+                            </div>
+                            <div class="row-sub-content">
+                                <label for="solar-rad4" style="display: flex; ">
+                                    <input type="radio" name="solar-rad" class="rad-input" id="solar-rad4"
+                                        onclick="rad4Checked()">
+                                    <label for="solar-rad4" class="rad-text">อื่น ๆ</label>
+                                    <div class="etc" style="display: flex;">
+                                        <label for="solar-rad4" style="margin: 0 5px 0 0;"
+                                            class="rad-text">(โปรดระบุ)</label>
+                                        <input type="text" name="rad-etc" id="solar-rad-etc" class="rad-text"
+                                            style="width: 160px; height: 25px;" disabled>
+                                    </div>
+                                </label>
+                            </div>
+                            <label for="" class="sub-title">รุ่น</label>
+                            <div class="row-sub-content">
+                                <input type="text" name="rad-gen" id="solar-rad-gen" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">ผู้ผลิต</label>
+                            <div class="row-sub-content">
+                                <input type="text" name="solar-producer" id="solar-producer" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">ประเทศ</label>
+                            <div class="row-sub-content">
+                                <input type="text" name="solar-country" id="solar-country" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">กำลังผลิต</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="solar-size" id="solar-size" class="page2-input">
+                                    <label for="" class="surfix">วัตต์ต่อ/แผ่น</label>
+                                </div>
+                            </div>
+                            <label for="" class="sub-title">จำนวน</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="solar-total" id="solar-total"
+                                        class="page2-input">
+                                    <label for="" class="surfix">แผ่น</label>
+                                </div>
+                            </div>
+                            <label for="" class="sub-title">กำลังผลิตรวม</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="solar-productivity" id="solar-productivity"
+                                        class="page2-input">
+                                    <label for="" class="surfix"> เมกะวัตต์</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sup-content">
+                        <label for="" class="sup-title">เครื่องแปลงไฟ (Inverter)</label>
+                        <div class="col-sub-content">
+                            <label for="" class="sub-title">รุ่น</label>
+                            <div class="row-sub-content">
+                                <input type="text" name="ivt-name" id="ivt-name" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">ผู้ผลิต</label>
+                            <div class="row-sub-content">
+                                <input type="text" id="ivt-producer" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">ประเทศ</label>
+                            <div class="row-sub-content">
+                                <input type="text" id="int-country" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">กำลังผลิต</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="" id="ivt-productivity" class="page2-input">
+                                    <label for="" class="surfix">กิโลวัตต์</label>
+                                </div>
+                            </div>
+                            <label for="" class="sub-title">จำนวน</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="ivt-num" id="ivt-num" class="page2-input">
+                                    <label for="" class="surfix">เครื่อง</label>
+                                </div>
+                            </div>
+                            <label for="" class="sub-title">กำลังผลิตรวม</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="" id="ivt-total-productivity"
+                                        class="page2-input">
+                                    <label for="" class="surfix">กิโลวัตต์</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="is-ground-content tab2-content">
+                    <h4 style="background-color: #3c97f1; margin-left: 100px;">รายการอุปกรณ์หลักบนพื้นดิน</h4>
+                    <br>
+                    <div class="sup-content">
+                        <label for="" class="sup-title">เอกสาร layout การติดตั้งบนหลังคา </label>
+                        <div class="col-sub-content">
+                            <label for="" class="sub-title">แนบเอกสาร</label>
+                            <div class="row-sub-content">
+                                <input type="file" name="solar-upload" id="solar-upload">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sup-content ">
+                        <label for="" class="sup-title">เซลล์แสงอาทิตย์</label>
+                        <div class="col-sub-content">
+                            <label for="" class="sub-title">ลักษณะอาคารที่ติดตั้ง</label>
+                            <div class="row-sub-content">
+                                <select name="" id="">
+                                    <option value="" disabled selected> เลือก </option>
+                                    <option value="">ถือครองกรรมสิทธิ์</option>
+                                    <option value="">เช่าที่ดิน</option>
+                                </select>
+                            </div>
+                            <label for="" class="sub-title">ชนิด</label>
+                            <div class="row-sub-content">
+                                <input type="radio" name="solar-rad" class="rad-input" id="solar-rad1"
+                                    onclick="rad4Checked()">
+                                <label for="solar-rad1" class="rad-text">Monocrystalline</label>
+                            </div>
+                            <div class="row-sub-content">
+                                <input type="radio" name="solar-rad" class="rad-input" id="solar-rad2"
+                                    onclick="rad4Checked()">
+                                <label for="solar-rad2" class="rad-text">Polycrystalline</label>
+                            </div>
+                            <div class="row-sub-content">
+                                <input type="radio" name="solar-rad" class="rad-input" id="solar-rad3"
+                                    onclick="rad4Checked()">
+                                <label for="solar-rad3" class="rad-text">Multicrystalline</label>
+                            </div>
+                            <div class="row-sub-content">
+                                <label for="solar-rad4" style="display: flex; ">
+                                    <input type="radio" name="solar-rad" class="rad-input" id="solar-rad4"
+                                        onclick="rad4Checked()">
+                                    <label for="solar-rad4" class="rad-text">อื่น ๆ</label>
+                                    <div class="etc" style="display: flex;">
+                                        <label for="solar-rad4" style="margin: 0 5px 0 0;"
+                                            class="rad-text">(โปรดระบุ)</label>
+                                        <input type="text" name="rad-etc" id="solar-rad-etc" class="rad-text"
+                                            style="width: 160px; height: 25px;" disabled>
+                                    </div>
+                                </label>
+                            </div>
+                            <label for="" class="sub-title">รุ่น</label>
+                            <div class="row-sub-content">
+                                <input type="text" name="rad-gen" id="solar-rad-gen" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">ผู้ผลิต</label>
+                            <div class="row-sub-content">
+                                <input type="text" name="solar-producer" id="solar-producer" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">ประเทศ</label>
+                            <div class="row-sub-content">
+                                <input type="text" name="solar-country" id="solar-country" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">กำลังผลิต</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="solar-size" id="solar-size" class="page2-input">
+                                    <label for="" class="surfix">วัตต์ต่อ/แผ่น</label>
+                                </div>
+                            </div>
+                            <label for="" class="sub-title">จำนวน</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="solar-total" id="solar-total"
+                                        class="page2-input">
+                                    <label for="" class="surfix">แผ่น</label>
+                                </div>
+                            </div>
+                            <label for="" class="sub-title">กำลังผลิตรวม</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="solar-productivity" id="solar-productivity"
+                                        class="page2-input">
+                                    <label for="" class="surfix"> เมกะวัตต์</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sup-content">
+                        <label for="" class="sup-title">เครื่องแปลงไฟ (Inverter)</label>
+                        <div class="col-sub-content">
+                            <label for="" class="sub-title">รุ่น</label>
+                            <div class="row-sub-content">
+                                <input type="text" name="ivt-name" id="ivt-name" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">ผู้ผลิต</label>
+                            <div class="row-sub-content">
+                                <input type="text" id="ivt-producer" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">ประเทศ</label>
+                            <div class="row-sub-content">
+                                <input type="text" id="int-country" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">กำลังผลิต</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="" id="ivt-productivity" class="page2-input">
+                                    <label for="" class="surfix">กิโลวัตต์</label>
+                                </div>
+                            </div>
+                            <label for="" class="sub-title">จำนวน</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="ivt-num" id="ivt-num" class="page2-input">
+                                    <label for="" class="surfix">เครื่อง</label>
+                                </div>
+                            </div>
+                            <label for="" class="sub-title">กำลังผลิตรวม</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="" id="ivt-total-productivity" class="page2-input">
+                                    <label for="" class="surfix">กิโลวัตต์</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="is-water-content tab2-content">
+                    <h4 style="background-color: #3c97f1; margin-left: 100px;">รายการอุปกรณ์หลักบนทุ่นลอยน้ำ</h4>
+                    <br>
+                    <div class="sup-content">
+                        <label for="" class="sup-title">เอกสาร layout การติดตั้งบนหลังคา </label>
+                        <div class="col-sub-content">
+                            <label for="" class="sub-title">แนบเอกสาร</label>
+                            <div class="row-sub-content">
+                                <input type="file" name="solar-upload" id="solar-upload">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sup-content ">
+                        <label for="" class="sup-title">เซลล์แสงอาทิตย์</label>
+                        <div class="col-sub-content">
+                            <label for="" class="sub-title">จำนวนอ่างเก็บน้ำที่ใช้ติดตั้งทุ่นลอยน้ำ</label>
+                            <div class="row-sub-content">
+                                <input type="number" name="" id="nb-solar-water" onchange="addWaterInput()">
+                            </div>
+                            <label for="" class="sub-title">ลักษณะอาคารที่ติดตั้ง</label>
+                            <div class="row-sub-content">
+                                <select name="" id="">
+                                    <option value="" disabled selected> เลือก </option>
+                                    <option value="">โรงงาน</option>
+                                    <option value="">คลังสินค้า</option>
+                                    <option value="">อื่นๆ(ระบุ)</option>
+                                </select>
+                            </div>
+                            <label for="" class="sub-title">ชนิด</label>
+                            <div class="row-sub-content">
+                                <input type="radio" name="solar-rad" class="rad-input" id="solar-rad1"
+                                    onclick="rad4Checked()">
+                                <label for="solar-rad1" class="rad-text">Monocrystalline</label>
+                            </div>
+                            <div class="row-sub-content">
+                                <input type="radio" name="solar-rad" class="rad-input" id="solar-rad2"
+                                    onclick="rad4Checked()">
+                                <label for="solar-rad2" class="rad-text">Polycrystalline</label>
+                            </div>
+                            <div class="row-sub-content">
+                                <input type="radio" name="solar-rad" class="rad-input" id="solar-rad3"
+                                    onclick="rad4Checked()">
+                                <label for="solar-rad3" class="rad-text">Multicrystalline</label>
+                            </div>
+                            <div class="row-sub-content">
+                                <label for="solar-rad4" style="display: flex; ">
+                                    <input type="radio" name="solar-rad" class="rad-input" id="solar-rad4"
+                                        onclick="rad4Checked()">
+                                    <label for="solar-rad4" class="rad-text">อื่น ๆ</label>
+                                    <div class="etc" style="display: flex;">
+                                        <label for="solar-rad4" style="margin: 0 5px 0 0;"
+                                            class="rad-text">(โปรดระบุ)</label>
+                                        <input type="text" name="rad-etc" id="solar-rad-etc" class="rad-text"
+                                            style="width: 160px; height: 25px;" disabled>
+                                    </div>
+                                </label>
+                            </div>
+                            <label for="" class="sub-title">รุ่น</label>
+                            <div class="row-sub-content">
+                                <input type="text" name="rad-gen" id="solar-rad-gen" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">ผู้ผลิต</label>
+                            <div class="row-sub-content">
+                                <input type="text" name="solar-producer" id="solar-producer" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">ประเทศ</label>
+                            <div class="row-sub-content">
+                                <input type="text" name="solar-country" id="solar-country" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">กำลังผลิต</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="solar-size" id="solar-size" class="page2-input">
+                                    <label for="" class="surfix">วัตต์ต่อ/แผ่น</label>
+                                </div>
+                            </div>
+                            <!-- <label for="" class="sub-title">จำนวน</label>
+                            <div class="row-sub-content">
+                                <input type="number" min="0" name="solar-total" id="solar-total" class="page2-input">
+                                <label for="" class="surfix">แผ่น</label>
+                            </div>
+                            <label for="" class="sub-title">กำลังผลิตรวม</label>
+                            <div class="row-sub-content">
+                                <input type="number" min="0" name="solar-productivity" id="solar-productivity"
+                                    class="page2-input">
+                                <label for="" class="surfix"> เมกะวัตต์</label>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="sup-content">
+                        <label for="" class="sup-title">เครื่องแปลงไฟ (Inverter)</label>
+                        <div class="col-sub-content">
+                            <label for="" class="sub-title">รุ่น</label>
+                            <div class="row-sub-content">
+                                <input type="text" name="ivt-name" id="ivt-name" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">ผู้ผลิต</label>
+                            <div class="row-sub-content">
+                                <input type="text" id="ivt-producer" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">ประเทศ</label>
+                            <div class="row-sub-content">
+                                <input type="text" id="int-country" class="page2-input">
+                            </div>
+                            <label for="" class="sub-title">กำลังผลิต</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="" id="ivt-productivity" class="page2-input">
+                                    <label for="" class="surfix">กิโลวัตต์</label>
+                                </div>
+                            </div>
+                            <label for="" class="sub-title">จำนวน</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="ivt-num" id="ivt-num" class="page2-input">
+                                    <label for="" class="surfix">เครื่อง</label>
+                                </div>
+                            </div>
+                            <label for="" class="sub-title">กำลังผลิตรวม</label>
+                            <div class="row-sub-content">
+                                <div class="ip-sf">
+                                    <input type="number" min="0" name="" id="ivt-total-productivity" class="page2-input">
+                                    <label for="" class="surfix">กิโลวัตต์</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4>รายละเอียดอุปกรณ์อื่นๆ</h4>
+                <br>
+                <div class="sup-content">
+                    <label for="have-ess" class="sup-title">
+                        <input class="form-check-input" type="checkbox" name="have-ess" id="have-ess" value="yes"
+                            onclick="haveESS()" style="position: relative; bottom: 2px; margin-right: 4px;">
+                        ระบบกักเก็บพลังงาน
+                    </label>
+                    <div none="none" class="none col-sub-content" id="none">
+                        <label for="" class="sub-title">รุ่น</label>
+                        <div class="row-sub-content">
+                            <input type="text" name="" id="ess-model" class="page2-input">
+                        </div>
+                        <label for="" class="sub-title">ผู้ผลิต</label>
+                        <div class="row-sub-content">
+                            <input type="text" name="" id="ess-producer" class="page2-input">
+                        </div>
+                        <label for="" class="sub-title">ประเทศ</label>
+                        <div class="row-sub-content">
+                            <input type="text" name="" id="ess-country" class="page2-input">
+                        </div>
+                        <label for="" class="sub-title">จำนวน</label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="ess-num" class="page2-input">
+                                <label for="" class="surfix">เครื่อง</label>
+                            </div>
+                        </div>
+                        <label for="" class="sub-title">ขนาด</label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="ess-productivity" class="page2-input">
+                                <label for="" class="surfix">กิโลวัตต์</label>
+                            </div>
+                        </div>
+                        <!-- <div class="sub-content">
+                            <label for="" class="sub-title">กำลังผลิตรวม</label>
+                            <input type="number" min="0" name="" id="ess-total-productivity" class="page2-input">
+                            <label for="" class="surfix">กิโลวัตต์</label>
+                        </div> -->
+                        <label for="" class="sub-title">แนบเอกสาร</label>
+                        <div class="row-sub-content">
+                            <input type="file" name="" id="ess-upload">
+                        </div>
+                    </div>
+                </div>
+                <div class="sup-content">
+                    <label for="" class="sup-title">อื่นๆ(โปรดระบุ)</label>
+                    <div class="col-sub-content etc-tools">
+                        <div class="row-sub-content">
+                            <input type="text" name="" id="etc-tools-input" class="etc-input">
+                            <div class="etc-div" onclick="addETC()">
+                                <a id="add-etc"> เพิ่ม</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4>รายละเอียดการออกแบบและติดตั้ง</h4>
+                <br>
+                <div class="sup-content">
+                    <label for="" class="sup-title">ผู้ดำเนินการออกแบบ จำหน่าย และติดตั้ง</label>
+                    <div class="col-sub-content">
+                        <label for="" class="sub-title">บริษัท</label>
+                        <div class="row-sub-content">
+                            <input type="text" name="" id="" class="page2-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="sup-content 2.2.2">
+                    <label for="" class="sup-title">รายละเอียดการลงทุน</label>
+                    <div class="col-sub-content">
+                        <label for="" class="sub-title">ค่าก่อสร้าง</label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="" class="page2-input" min="0">
+                                <label for="" class="surfix">ล้านบาท</label>
+                            </div>
+                        </div>
+                        <div class="row-sub-content">
+                            <label for="" class="sub-title"
+                                style="width: 375px; margin-bottom: 8px;">ค่าเครื่องจักรและอุปกรณ์อื่น ๆ</label>
+                        </div>
+                        <label for="" class="sub-title"
+                            style="padding-left: 10px; font-size: 12.5px">แผงเซลล์อาทิตย์</label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="" class="page2-input"
+                                    style="margin-left: 10px; width: 290px;">
+                                    <label for="" class="surfix">ล้านบาท</label>
+                            </div>
+                        </div>
+                        <label for="" class="sub-title" style="padding-left: 10px; font-size: 12.5px">
+                            เครื่องแปลงไฟ</label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="" class="page2-input"
+                                    style="margin-left: 10px; width: 290px;">
+                                    <label for="" class="surfix">ล้านบาท</label>
+                            </div>
+                        </div>
+                        <label for="" class="sub-title" style="padding-left: 10px; font-size: 12.5px">
+                            ระบบกักเก็บพลังงาน</label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="" class="page2-input"
+                                    style="margin-left: 10px; width: 290px;">
+                                    <label for="" class="surfix">ล้านบาท</label>
+                            </div>
+                        </div>
+                        <label for="" class="sub-title" style="padding-left: 10px; font-size: 12.5px">อื่นๆ</label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="" class="page2-input"
+                                    style="margin-left: 10px; width: 290px;">
+                                    <label for="" class="surfix">ล้านบาท</label>
+                            </div>
+                        </div>
+                        <label for="" class="sub-title">ค่าติดตั้ง</label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="" class="page2-input">
+                                <label for="" class="surfix">ล้านบาท</label>
+                            </div>
+                        </div>
+                        <label for="" class="sub-title">ค่าทดลองเครื่อง</label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="" class="page2-input">
+                                <label for="" class="surfix">ล้านบาท</label>
+                            </div>
+                        </div>
+                        <label for="" class="sub-title">ค่าใช้จ่ายก่อนเปิดดำเนินการ</label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="" class="page2-input">
+                                <label for="" class="surfix">ล้านบาท</label>
+                            </div>
+                        </div>
+                        <label for="" class="sub-title">มูลค่าสินทรัพย์อื่น ๆ </label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="" class="page2-input">
+                                <label for="" class="surfix">ล้านบาท</label>
+                            </div>
+                        </div>
+                        <label for="" class="sub-title">ค่าที่ดิน </label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="" class="page2-input">
+                                <label for="" class="surfix">ล้านบาท</label>
+                            </div>
+                        </div>
+                        <label for="" class="sub-title">ค่าวิชาการ</label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="" class="page2-input">
+                                <label for="" class="surfix">ล้านบาท</label>
+                            </div>
+                        </div>
+                        <label for="" class="sub-title">เงินทุนหมุนเวียน </label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="" class="page2-input">
+                                <label for="" class="surfix">ล้านบาท</label>
+                            </div>
+                        </div>
+                        <label for="" class="sub-title">รวมเงินลงทุน</label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" min="0" name="" id="" class="page2-input">
+                                <label for="" class="surfix">ล้านบาท</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn1" target="#tab3">
+                    <a id="go-tab3" style="color: white;"> ต่อไป</a>
+                </div>
+            </div>
+            <div id="tab3" data-tab-content>
+                <div class="btn1">
+                    <a style="color: white;"> ต่อไป</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
