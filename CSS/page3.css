@@ -178,6 +178,7 @@ label {
 #tab2 .sub-content {
     display: flex;
     margin-bottom: 10px;
+    
     /* border: 2px solid green; */
 }
 #tab2 .sub-title {
@@ -265,6 +266,23 @@ label {
     right: 8px;
     width: 15px;
     height: 15px;
+}
+
+#tab2 .etc-input{
+    display: flex;
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+
+.etc-btn-input{
+    width: fit-content;
+    margin: center;
+    margin-left: 10px;
+    padding: 0px 10px;
+}
+
+.install-text{
+    padding-left: 10px;
 }
 
 .btn1 {
