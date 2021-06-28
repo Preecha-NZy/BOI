@@ -86,6 +86,14 @@ $.Thailand({
   $zipcode: $('#zipcode'), // input ของรหัสไปรษณีย์
 });
 
+$(function(){
+  $("#datepicker").datepicker({
+      language:'th-th',
+      format:'dd/mm/yyyy',
+      autoclose: true
+  });
+});
+
 
 function is_checked() {
   var roof = document.getElementById("is-roof")
