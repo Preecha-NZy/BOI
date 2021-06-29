@@ -89,15 +89,14 @@ header {
     border-bottom: 0.1px solid #ccc;
 }
 .tab {
-    position: relative;
     cursor: pointer;
     padding: 10px;
 }
 .tab.active {
     position: relative;
     background-color: rgba(214, 214, 214, 0.336);
-    border: 0.1px solid #ccc;
-    border-bottom: 1px solid rgb(255, 255, 255);
+    border: 0.8px solid #ccc;
+    border-bottom: 2px solid rgb(255, 255, 255);
     border-radius: 5px 5px 0 0;
     z-index: 2;
     box-sizing: content-box;
@@ -111,49 +110,23 @@ header {
     background-color: white;
     height: fit-content;
 }
-label {
-    font-size: 15px;
-    font-weight: 400;
-}
-#tab1 .sup-content {
+.sup-content {
     display: flex;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     /* border: 2px solid red; */
 }
-#tab1 .sup-title {
-    min-width: 40%;
-    margin-right: 10px;
-    display: flex; 
-    justify-content: flex-end;
-    width: 300px;
+.sup-title {
+    width: 43%;
     text-align: end;
+    margin-right: 20px;
 }
-#tab1 .sub-content {
+.row-sub-content {
     display: flex;
-    margin-bottom: 8px;
-    /* border: 2px solid green; */
+    margin-bottom: 10px;
+    align-items: center;
+    
 }
-#tab1 select {
-    height: 25px;
-    width: 350px;
-    padding-left: 8px;
-}
-#tab1 .sub-content label {
-
-    margin-right: 10px;
-}
-#tab1 input {
-    height: 25px;
-    padding-left: 8px;
-}
-#tab1 .address .sub-content label {
-    min-width: 46.29px;
-    margin-right: 10px;
-}
-#tab1 .address-input {
-    width: 293.71px;
-}
-#tab2 h4 {
+.content h4 {
     background-color: #275b90;
     color: white;
     font-size: 15px;
@@ -163,115 +136,181 @@ label {
     width: fit-content;
     margin-top: 10px;
 }
-#tab2 .sup-content {
-    display: flex;
-    /* margin-bottom: 15px; */
-    /* border: 2px solid red; */
-}
-#tab2 .sup-title {
-    margin-right: 10px;
-    display: flex;
-    justify-content: flex-end;
-    min-width: 35%;
-    text-align: end;
-}
-#tab2 .sub-content {
-    display: flex;
-    margin-bottom: 10px;
-    /* border: 2px solid green; */
-}
-#tab2 .sub-title {
-    width: 150px;
-    position: relative;
-    top: 1.6px;
-    font-size: 14px;
-}
 .tab2-content {
     margin-bottom: 25px;
     display: none;
 }
-.check-box {
+.rad-text {
+    position: relative;
+    top: 3px;
+}
+.ip-sf {
+    position: relative;
     display: flex;
     align-items: center;
 }
-.foot-title {
-    margin-left: 10px;
-    font-size: 14px;
+.ip-sf .surfix {
+    position: absolute;
+    right: 10px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: gray;
 }
+/* .surfix {
+    margin-left: 10px;
+} */
 .none {
     display: none;
 }
-#tab2 .rad-label {
-    width: fit-content;
-    position: relative;
-    top: -6px;
-    padding: 5px;
-    display: flex;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: .3s;
+input[type=text], input[type=number]{
+    display: block;
+    width: 300px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 2px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-#tab2 .rad-label:hover {
-    background: rgba(192, 192, 192, 0.185);
-}   
-.rad-input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    z-index: -1;
+input[type=checkbox], 
+input[type=radio] {
+    width: 1.3em;
+    height: 1.3em;
+    margin-top: 0.25em;
+    vertical-align: top;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-print-color-adjust: exact;
 }
-#tab2 .rad-design {
-    margin-top: 3px;
-    width: 17px;
-    height: 17px;
-    border-radius: 100px;
-    background: #275b90;
-    position: relative;
+input[type=checkbox] {
+    border-radius: 0.25em;
 }
-#tab2 .rad-design::before {
-    content: '';
-    display: inline-block;
-    width: inherit;
-    height: inherit;
-    border-radius: inherit;
-    background: rgb(204, 204, 204);
-    transform: scale(1.1);
-    transition: .3s;
+input[type=radio] {
+    border-radius: 50%;
 }
-#tab2 .rad-input:checked+.rad-design::before {
-    transform: scale(0);
+input:checked[type=checkbox] {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
 }
-#tab2 .rad-text , .etc{
-    color: gray;
-    margin-left: 14px;
-    /* font-size: 16px;
-    font-weight: 500; */
-    transition: .3s;
+input:checked[type=radio] {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
 }
-#tab2 .rad-input:checked~.rad-text, .rad-input:checked~.etc{
+select {
+    display: block;
+    width: 300px;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    border: 2px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: nne;
+}
+input[type=text]:focus, 
+input[type=number]:focus, 
+select:focus {
+    border: 2px solid #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+input[type=number]:focus + .surfix {
     color: black;
 }
-.page2-input {
-    height: 25px;
-    width: 250px;
-    padding-left: 5px;
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
 }
-#have-ess {
-    position: relative;
-    top: 3.5px;
-    right: 8px;
-    width: 15px;
-    height: 15px;
+input[type=checkbox]:focus,
+input[type=radio]:focus {
+    border-color: #86b7fe;
+    border-width: 2px;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
+input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    border-width: 2px;
+}
+.rad-text , .etc{
+    color: gray;
+    margin-left: 10px;
+    transition: .3s;
+}
+.rad-input:checked+.rad-text, .rad-input:checked ~ .etc .rad-text{
+    color: black;
 
+}
+#etc-add, #etc-delete {
+    color: white;
+}
+.etc-div {
+    width: 45.4px;
+    background-color: #4CAF50;
+    height: 25px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    border-radius: 3px;
+}
+.etc-div:hover{
+    cursor: pointer;
+}
+.etc-div a {
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+}
+.etc-div-delete {
+    width: 45.4px;
+    background-color: red;
+    height: 25px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    border-radius: 3px;
+}
+.etc-div-delete:hover{
+    cursor: pointer;
+}
+.etc-div-delete a {
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+}
 .btn1 {
     width: fit-content;
     background-color: #4CAF50;
     display: block;
-    margin-top: 20px;
+    margin-bottom: 20px;
     border-color: #4CAF50;
     padding: 7px 25px;
     border-radius: 2px;
@@ -286,12 +325,3 @@ label {
     color: white;
     text-decoration: none;
 }
-/* input[type="number"] {
-    background-color: red;
-} */
-/* .row-3-col-3 {
-    height: 25px;
-    margin: 0 0 0 10px;
-    padding-left: 5px;
-    width: 138.50px;
-} */
