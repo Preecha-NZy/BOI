@@ -18,7 +18,7 @@ tabs.forEach(tab => {
 
 gos.forEach(go => {
   go.addEventListener('click', () => {
-    console.log(go)
+    // console.log(go)
     var x = go.getElementsByTagName('a')[0].id;
     if(x === 'go-tab2'){
       var x = "tab2-title"
@@ -68,7 +68,7 @@ function haveESS() {
   var have = document.getElementById("have-ess");
   if (have.checked) {
     none[0].classList.remove("none")
-    console.log(none[0])
+    // console.log(none[0])
   }
   else {
     var inputs = none[0].getElementsByTagName('input');
@@ -113,7 +113,8 @@ function is_checked() {
   else {
     water_content[0].style.display = 'none'
   }
-  // if (!roof.checked & !ground.checked & !water.checked) {
-  //   content[0].style.display = 'none'
-  // }
 };
+
+function addETC() {
+  var etcInput = document.getElementById("etc-input")
+}

@@ -1,6 +1,33 @@
 ้<!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        function getInput() {
+            var content = document.getElementsByClassName('create-input')
+            console.log(content[0])
+            var value = document.getElementById("test-num")
+            for (let i=0; i<value.value; i++) {
+               var div = document.createElement('div')
+               div.setAttribute('class','newdiv')
+               var newInput = document.createElement('input')
+               newInput.setAttribute('class','newInput')
+               newInput.setAttribute('placeholder','ใส่ข้อมูล')
+               newInput.setAttribute('type','number')
+               div.appendChild(newInput)
+               content[0].appendChild(div)
+
+               var div = document.createElement('div')
+               div.setAttribute('class','newdiv')
+               var newInput = document.createElement('input')
+               newInput.setAttribute('class','newInput')
+               newInput.setAttribute('placeholder','ใส่ข้อมูล5')
+               newInput.setAttribute('type','number')
+               div.appendChild(newInput)
+               content[0].appendChild(div)
+               console.log(i)
+            }
+        }
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,51 +35,8 @@
     <title>Document</title>
 </head>
 <body>
-    <section>
-        <label  class="content">
-            <input type="radio" name="age" id="">
-            <div class="design">
-                <div class="checked"></div>
-            </div>
-            <div class="text">18-20</div>
-        </label>
-        <label  class="content">
-            <input type="radio" name="age" id="">
-            <div class="design">
-                <div class="checked"></div>
-            </div>
-            <div class="text">20-25</div>
-        </label>
-        <label  class="content">
-            <input type="radio" name="age" id="">
-            <div class="design">
-                <div class="checked"></div>
-            </div>
-            <div class="text">25-30</div>
-        </label>
-    </section>
-    <section>
-        <label  class="content">
-            <input type="radio" name="age1" id="">
-            <div class="design">
-                <div class="checked1"></div>
-            </div>
-            <div class="text">18-20</div>
-        </label>
-        <label  class="content">
-            <input type="radio" name="age1" id="">
-            <div class="design">
-                <div class="checked1"></div>
-            </div>
-            <div class="text">20-25</div>
-        </label>
-        <label  class="content">
-            <input type="radio" name="age1" id="">
-            <div class="design">
-                <div class="checked1"></div>
-            </div>
-            <div class="text">25-30</div>
-        </label>
-    </section>
+    <div class="create-input">
+        <input type="number" name="" id="test-num" style="width: 300px;" onchange="getInput()">
+    </div>
 </body>
 </html>

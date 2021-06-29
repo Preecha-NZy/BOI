@@ -82,7 +82,6 @@ header {
 }
 .tabs {
     display: flex;
-    align-items: baseline;
     list-style-type: none;
     width: 100%;
     height: 44px;
@@ -97,7 +96,7 @@ header {
     position: relative;
     background-color: rgba(214, 214, 214, 0.336);
     border: 0.1px solid #ccc;
-    border-bottom: 1px solid rgb(255, 255, 255);
+    border-bottom: 2px solid whit;
     border-radius: 5px 5px 0 0;
     z-index: 2;
     box-sizing: content-box;
@@ -118,7 +117,7 @@ label {
 #tab1 .sup-content {
     display: flex;
     margin-bottom: 15px;
-    /* border: 2px solid red; */
+    border: 2px solid red;
 }
 #tab1 .sup-title {
     min-width: 40%;
@@ -133,11 +132,11 @@ label {
     margin-bottom: 8px;
     /* border: 2px solid green; */
 }
-#tab1 select {
+/* #tab1 select {
     height: 25px;
     width: 350px;
     padding-left: 8px;
-}
+} */
 #tab1 .sub-content label {
 
     margin-right: 10px;
@@ -266,6 +265,28 @@ label {
     width: 15px;
     height: 15px;
 }
+.etc-input {
+    width: 250px;
+    height: 25px;
+}
+.etc-div {
+    width: fit-content;
+    background-color: #4CAF50;
+    height: 25px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    border-radius: 3px;
+}
+.etc-div:hover{
+    cursor: pointer;
+}
+.etc-div a {
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+}
 
 .btn1 {
     width: fit-content;
@@ -286,12 +307,3 @@ label {
     color: white;
     text-decoration: none;
 }
-/* input[type="number"] {
-    background-color: red;
-} */
-/* .row-3-col-3 {
-    height: 25px;
-    margin: 0 0 0 10px;
-    padding-left: 5px;
-    width: 138.50px;
-} */
