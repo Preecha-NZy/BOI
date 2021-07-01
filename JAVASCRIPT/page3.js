@@ -21,11 +21,11 @@ gos.forEach(go => {
   go.addEventListener('click', () => {
     // console.log(go)
     var x = go.getElementsByTagName('a')[0].id;
-    if(x === 'go-tab2'){
+    if (x === 'go-tab2') {
       var x = "tab2-title"
-      tabs.forEach (tab => {
+      tabs.forEach(tab => {
         const a = document.querySelector(tab.dataset.tabTarget)
-        if(tab.id === x) {
+        if (tab.id === x) {
           const target = document.querySelector(tab.dataset.tabTarget)
           tab.classList.add('active')
           target.classList.add('active')
@@ -38,9 +38,9 @@ gos.forEach(go => {
     }
     else if (x == 'go-tab3') {
       var x = "tab3-title"
-      tabs.forEach (tab => {
+      tabs.forEach(tab => {
         const a = document.querySelector(tab.dataset.tabTarget)
-        if(tab.id === x) {
+        if (tab.id === x) {
           const target = document.querySelector(tab.dataset.tabTarget)
           tab.classList.add('active')
           target.classList.add('active')
@@ -66,7 +66,7 @@ function rad4Checked() {
     document.getElementById("roof_type_etc").value = '';
   }
 
-  if(ground_type.checked) {
+  if (ground_type.checked) {
     document.getElementById('ground_type_etc').disabled = false;
   }
   else {
@@ -127,7 +127,7 @@ function haveESS() {
   else {
     var inputs = none[0].getElementsByTagName('input');
     for (var index = 0; index < inputs.length; ++index) {
-        inputs[index].value = '';
+      inputs[index].value = '';
     }
     none[0].classList.add("none")
   }
@@ -152,7 +152,7 @@ function addETC() {
     content.appendChild(show_etc)
     content.appendChild(delete_area)
     container[0].appendChild(content)
-    delete_area.onclick = function() {
+    delete_area.onclick = function () {
       delete_area.parentElement.style.display = 'none'
     }
   }
@@ -176,7 +176,7 @@ function addpoolInput() {
       foot_title.setAttribute('class', 'surfix')
       sub_title.innerHTML = `จำนวนแผงโซล่าเซลล์ที่อ่างเก็บน้ำที่ ${i}`
       foot_title.innerHTML = "แผ่น"
-  
+
       input_surfix.appendChild(number_solar)
       input_surfix.appendChild(foot_title)
       sub_content.appendChild(input_surfix)
@@ -200,7 +200,7 @@ function addpoolInput() {
       foot_title.setAttribute('class', 'surfix')
       sub_title.innerHTML = `จำนวนแผงโซล่าเซลล์ที่อ่างเก็บน้ำที่ ${i}`
       foot_title.innerHTML = "แผ่น"
-  
+
       input_surfix.appendChild(number_solar)
       input_surfix.appendChild(foot_title)
       sub_content.appendChild(input_surfix)
@@ -209,3 +209,71 @@ function addpoolInput() {
     }
   }
 }
+
+
+
+let select_box = document.querySelectorAll('.select-box')
+select_box.forEach(box => {
+  let select_country = box.querySelectorAll('.options-container')
+  fetch("../Country/country-list-th.json")
+    .then(response => response.json())
+    .then(countrys => {
+      countrys.forEach(country => {
+        select_country.forEach(select => {
+          let option = document.createElement('div')
+          let newOption = document.createElement('input')
+          let label = document.createElement('label')
+          option.setAttribute('class', 'option')
+          newOption.setAttribute('type', 'radio')
+          newOption.setAttribute('class', 'radio')
+          newOption.setAttribute('id', `${country.enName}`)
+          newOption.setAttribute('name', 'category')
+          option.style.display = 'block'
+          label.setAttribute('for', `${country.enName}`)
+          label.innerHTML = `${country.name}`
+          option.appendChild(newOption)
+          option.appendChild(label)
+          select.appendChild(option)
+        })
+      })
+      console.log(box)
+      const selected = box.querySelector(".selected");
+      const optionsContainer = box.querySelector(".options-container");
+      const searchBox = box.querySelector(".search-box input");
+
+      const optionsList = optionsContainer.querySelectorAll(".option");
+      selected.addEventListener("click", () => {
+        optionsContainer.classList.toggle("active");
+
+        searchBox.value = "";
+        filterList("");
+
+        if (optionsContainer.classList.contains("active")) {
+          searchBox.focus();
+        }
+      });
+
+      optionsList.forEach(o => {
+        o.addEventListener("click", () => {
+          selected.innerHTML = o.querySelector("label").innerHTML;
+          optionsContainer.classList.remove("active");
+        });
+      });
+
+      searchBox.addEventListener("keyup", function (e) {
+        filterList(e.target.value);
+        console.log(e.target.value)
+      });
+
+      const filterList = searchTerm => {
+        optionsList.forEach(option => {
+          let label = option.innerText;
+          if (label.indexOf(searchTerm) != -1) {
+            option.style.display = "block";
+          } else {
+            option.style.display = "none";
+          }
+        });
+      };
+    })
+})

@@ -57,7 +57,7 @@
         </ul>
 
         <div class="tab-content">
-            <div id="tab1" data-tab-content  class="active">
+            <div id="tab1" data-tab-content>
                 <div class="sup-content">
                     <label for="" class="sup-title">ผลิตภัณฑ์ของโครงการที่จะขอรับการส่งเสริม</label>
                     <div class="col-sub-content">
@@ -97,8 +97,8 @@
                         </div>
                         <div class="row-sub-content">
                             <div class="col-5">
-                                <input type="number" name="" id="capacity_page" class="form-control form-control-sm" min="0"
-                                    placeholder="กรอกเลขหน้าในสัญญา">
+                                <input type="number" name="" id="capacity_page" class="form-control form-control-sm"
+                                    min="0" placeholder="กรอกเลขหน้าในสัญญา">
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,8 @@
                     <label for="" class="sup-title">สถานที่ติดตั้งตามสัญญา</label>
                     <div class="col-sub-content">
                         <div class="row-sub-content">
-                            <input type="text" name="" id="address_num" class="form-control form-control-sm" placeholder="เลขที่" required>
+                            <input type="text" name="" id="address_num" class="form-control form-control-sm"
+                                placeholder="เลขที่" required>
                         </div>
                         <div class="row-sub-content">
                             <input type="text" name="" id="road" class="form-control form-control-sm" placeholder="ถนน">
@@ -135,7 +136,7 @@
                     <a id="go-tab2" style="color: white;"> ต่อไป</a>
                 </div>
             </div>
-            <div id="tab2" data-tab-content>
+            <div id="tab2" data-tab-content class="active">
                 <h4>ลักษณะการติดตั้ง</h4>
                 <br>
                 <div class="sup-content">
@@ -155,6 +156,13 @@
                             <input type="checkbox" name="installation-site" class="is-check-box form-check-input"
                                 id="is-pool" onclick="is_checked()">
                             <label for="is-pool" class="install-text" style="margin-left: 8px;">ทุ่นลอยน้ำ</label>
+                        </div>
+                        <label for="" class="sub-titel">รวมกำลังการผลิตติดตั้งของโครงการ</label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" name="" id="Project_Total">
+                                <label for="" class="surfix">เมกะวัตต์(MWp)</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -223,12 +231,27 @@
                             </div>
                             <label for="" class="sub-title">ประเทศ</label>
                             <div class="row-sub-content">
-                                <input type="text" name="solar-country" id="roof_country" class="page2-input">
+                                <div class="select-box">
+                                    <div class="options-container">
+                                    </div>
+                                    <div class="selected">
+                                        กรอกชื่อประเทศ
+                                    </div>
+                                    <div class="search-box">
+                                        <input type="text" placeholder="ค้นหาชื่อประเทศ" />
+                                    </div>
+                                </div>
                             </div>
+                            <!-- <div class="row-sub-content">
+                                <select name="" id="roof_country" class="select-country">
+                                    <option value="" disabled selected>เลือกประเทศผู้ผลิต</option>
+                                </select>
+                            </div> -->
                             <label for="" class="sub-title">กำลังผลิต</label>
                             <div class="row-sub-content">
                                 <div class="ip-sf">
-                                    <input type="number" min="0" name="solar-size" id="roof_capacity" class="page2-input">
+                                    <input type="number" min="0" name="solar-size" id="roof_capacity"
+                                        class="page2-input">
                                     <label for="roof_capacity" class="surfix">วัตต์ต่อ/แผ่น</label>
                                 </div>
                             </div>
@@ -263,7 +286,16 @@
                             </div>
                             <label for="" class="sub-title">ประเทศ</label>
                             <div class="row-sub-content">
-                                <input type="text" id="roof_ivt_country" class="page2-input">
+                                <div class="select-box">
+                                    <div class="options-container">
+                                    </div>
+                                    <div class="selected" id="roof_ivt_country">
+                                        กรอกชื่อประเทศ
+                                    </div>
+                                    <div class="search-box">
+                                        <input type="text" placeholder="ค้นหาชื่อประเทศ" />
+                                    </div>
+                                </div>
                             </div>
                             <label for="" class="sub-title">กำลังผลิต</label>
                             <div class="row-sub-content">
@@ -331,8 +363,8 @@
                             </div>
                             <div class="row-sub-content">
                                 <label for="solar-rad4" style="display: flex; ">
-                                    <input type="radio" name="ground_solar_type" class="rad-input" id="ground_solar_type4"
-                                        onclick="rad4Checked()">
+                                    <input type="radio" name="ground_solar_type" class="rad-input"
+                                        id="ground_solar_type4" onclick="rad4Checked()">
                                     <label for="ground_solar_type4" class="rad-text">อื่น ๆ</label>
                                     <div class="etc" style="display: flex;">
                                         <label for="ground_solar_type4" style="margin: 0 5px 0 0;"
@@ -352,12 +384,22 @@
                             </div>
                             <label for="" class="sub-title">ประเทศ</label>
                             <div class="row-sub-content">
-                                <input type="text" name="solar-country" id="ground_country" class="page2-input">
+                                <div class="select-box">
+                                    <div class="options-container">
+                                    </div>
+                                    <div class="selected" id="ground_country">
+                                        กรอกชื่อประเทศ
+                                    </div>
+                                    <div class="search-box">
+                                        <input type="text" placeholder="ค้นหาชื่อประเทศ" />
+                                    </div>
+                                </div>
                             </div>
                             <label for="" class="sub-title">กำลังผลิต</label>
                             <div class="row-sub-content">
                                 <div class="ip-sf">
-                                    <input type="number" min="0" name="solar-size" id="ground_capacity" class="page2-input">
+                                    <input type="number" min="0" name="solar-size" id="ground_capacity"
+                                        class="page2-input">
                                     <label for="" class="surfix">วัตต์ต่อ/แผ่น</label>
                                 </div>
                             </div>
@@ -392,7 +434,16 @@
                             </div>
                             <label for="" class="sub-title">ประเทศ</label>
                             <div class="row-sub-content">
-                                <input type="text" id="ground_ivt_country" class="page2-input">
+                                <div class="select-box">
+                                    <div class="options-container">
+                                    </div>
+                                    <div class="selected" id="ground_ivt_country">
+                                        กรอกชื่อประเทศ
+                                    </div>
+                                    <div class="search-box">
+                                        <input type="text" placeholder="ค้นหาชื่อประเทศ" />
+                                    </div>
+                                </div>
                             </div>
                             <label for="" class="sub-title">กำลังผลิต</label>
                             <div class="row-sub-content">
@@ -411,7 +462,8 @@
                             <label for="" class="sub-title">กำลังผลิตรวม</label>
                             <div class="row-sub-content">
                                 <div class="ip-sf">
-                                    <input type="number" min="0" name="" id="ground_ivt_total_capacity" class="page2-input">
+                                    <input type="number" min="0" name="" id="ground_ivt_total_capacity"
+                                        class="page2-input">
                                     <label for="" class="surfix">กิโลวัตต์</label>
                                 </div>
                             </div>
@@ -485,12 +537,22 @@
                             </div>
                             <label for="" class="sub-title">ประเทศ</label>
                             <div class="row-sub-content">
-                                <input type="text" name="solar-country" id="pool_country" class="page2-input">
+                                <div class="select-box">
+                                    <div class="options-container">
+                                    </div>
+                                    <div class="selected" id="pool_country">
+                                        กรอกชื่อประเทศ
+                                    </div>
+                                    <div class="search-box">
+                                        <input type="text" placeholder="ค้นหาชื่อประเทศ" />
+                                    </div>
+                                </div>
                             </div>
                             <label for="" class="sub-title">กำลังผลิต</label>
                             <div class="row-sub-content">
                                 <div class="ip-sf">
-                                    <input type="number" min="0" name="solar-size" id="pool_capacity" class="page2-input">
+                                    <input type="number" min="0" name="solar-size" id="pool_capacity"
+                                        class="page2-input">
                                     <label for="" class="surfix">วัตต์ต่อ/แผ่น</label>
                                 </div>
                             </div>
@@ -509,8 +571,18 @@
                             </div>
                             <label for="" class="sub-title">ประเทศ</label>
                             <div class="row-sub-content">
-                                <input type="text" id="pool_ivt_country" class="page2-input">
+                                <div class="select-box">
+                                    <div class="options-container">
+                                    </div>
+                                    <div class="selected" id="pool_ivt_country">
+                                        กรอกชื่อประเทศ
+                                    </div>
+                                    <div class="search-box">
+                                        <input type="text" placeholder="ค้นหาชื่อประเทศ" />
+                                    </div>
+                                </div>
                             </div>
+
                             <label for="" class="sub-title">กำลังผลิต</label>
                             <div class="row-sub-content">
                                 <div class="ip-sf">
@@ -528,7 +600,8 @@
                             <label for="" class="sub-title">กำลังผลิตรวม</label>
                             <div class="row-sub-content">
                                 <div class="ip-sf">
-                                    <input type="number" min="0" name="" id="pool_ivt_total_capacity" class="page2-input">
+                                    <input type="number" min="0" name="" id="pool_ivt_total_capacity"
+                                        class="page2-input">
                                     <label for="" class="surfix">กิโลวัตต์</label>
                                 </div>
                             </div>
@@ -554,7 +627,16 @@
                         </div>
                         <label for="" class="sub-title">ประเทศ</label>
                         <div class="row-sub-content">
-                            <input type="text" name="" id="ess_country" class="page2-input">
+                            <div class="select-box">
+                                <div class="options-container">
+                                </div>
+                                <div class="selected" id="ess_country">
+                                    กรอกชื่อประเทศ
+                                </div>
+                                <div class="search-box">
+                                    <input type="text" placeholder="ค้นหาชื่อประเทศ" />
+                                </div>
+                            </div>
                         </div>
                         <label for="" class="sub-title">จำนวน</label>
                         <div class="row-sub-content">
@@ -618,7 +700,7 @@
                             <div class="ip-sf">
                                 <input type="number" min="0" name="" id="construction_cost" class="page2-input"
                                     style="margin-left: 10px; width: 290px;">
-                                    <label for="" class="surfix">ล้านบาท</label>
+                                <label for="" class="surfix">ล้านบาท</label>
                             </div>
                         </div>
                         <label for="" class="sub-title" style="padding-left: 10px; font-size: 12.5px">
@@ -627,7 +709,7 @@
                             <div class="ip-sf">
                                 <input type="number" min="0" name="" id="" class="page2-input"
                                     style="margin-left: 10px; width: 290px;">
-                                    <label for="" class="surfix">ล้านบาท</label>
+                                <label for="" class="surfix">ล้านบาท</label>
                             </div>
                         </div>
                         <label for="" class="sub-title" style="padding-left: 10px; font-size: 12.5px">
@@ -636,7 +718,7 @@
                             <div class="ip-sf">
                                 <input type="number" min="0" name="" id="" class="page2-input"
                                     style="margin-left: 10px; width: 290px;">
-                                    <label for="" class="surfix">ล้านบาท</label>
+                                <label for="" class="surfix">ล้านบาท</label>
                             </div>
                         </div>
                         <label for="" class="sub-title" style="padding-left: 10px; font-size: 12.5px">อื่นๆ</label>
@@ -644,7 +726,7 @@
                             <div class="ip-sf">
                                 <input type="number" min="0" name="" id="" class="page2-input"
                                     style="margin-left: 10px; width: 290px;">
-                                    <label for="" class="surfix">ล้านบาท</label>
+                                <label for="" class="surfix">ล้านบาท</label>
                             </div>
                         </div>
                         <label for="" class="sub-title">ค่าติดตั้ง</label>
