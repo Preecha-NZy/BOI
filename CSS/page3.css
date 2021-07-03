@@ -142,7 +142,8 @@ header {
 
 .row-sub-content {
     display: flex;
-    margin-bottom: 10px;
+    /* width: 300px; */
+    margin-bottom: 18px;
     align-items: center;
 }
 
@@ -159,7 +160,7 @@ header {
 
 .tab2-content {
     margin-bottom: 25px;
-    /* display: none; */
+    display: none;
 }
 
 .rad-text {
@@ -171,6 +172,7 @@ header {
     position: relative;
     display: flex;
     align-items: center;
+    /* width: 300px; */
 }
 
 .ip-sf .surfix {
@@ -182,10 +184,9 @@ header {
     color: gray;
 }
 
-.none {
-    display: none;
+.no-pointer {
+    pointer-events:none;
 }
-
 .select-box {
     position: relative;
     display: flex;
@@ -320,7 +321,7 @@ header {
     pointer-events: auto;
 }
 
-input[type=text], input[type=number] {
+input[type=text], input[type=number], input[type=month] {
     display: block;
     width: 300px;
     padding: 0.25rem 0.5rem;
@@ -393,7 +394,7 @@ select {
     appearance: none;
 }
 
-input[type=text]:focus, input[type=number]:focus, select:focus {
+input[type=text]:focus, input[type=number]:focus, select:focus, input[type=month]:focus {
     border: 2px solid #86b7fe;
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
