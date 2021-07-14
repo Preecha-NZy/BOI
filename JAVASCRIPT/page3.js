@@ -578,8 +578,8 @@ function submit() {
   }
   if (count === 0) {
     ProductDetail_insert()
-    let ESS = ESS_insert()
-    if (ESS == null) return;
+    let ess = ESS_insert()
+    if (ess == null) return;
     let ETC = Equipment_insert()
     if (ETC == null) return;
     let IVM = InvestmentDetail_insert()
