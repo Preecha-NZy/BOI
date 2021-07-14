@@ -1391,8 +1391,8 @@ function Tools_insert() {
 }
 
 function ESA_insert() {
-  let ESA = document.getElementsByClassName('ESA')
-  if (ESA[0].style['pointer-events'] == 'auto') {
+  let esa = document.getElementsByClassName('ESA')
+  if (esa[0].style['pointer-events'] == 'auto') {
     ESA.ID = `ESA${thai_year}`
     if (document.getElementById('ESA_Name').value != '')
       ESA.Name = document.getElementById('ESA_Name').value;
