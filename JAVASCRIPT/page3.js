@@ -104,6 +104,7 @@ function is_checked() {
     })
     FloatingSolar_cost()
     ChangeNumFloating_input()
+    FloatingInverter_cal()
     RoofSolar_cal()
   }
 }
@@ -1594,7 +1595,7 @@ function SYSPlan_insert() {
 
 function Plans_insert() {
   Plans.ID = `P${thai_year}`
-  if (Rooftop_Solar.Pvmodult_Sum > 1 || Farm_Solar.Pvmodult_Sum > 1 || Floating_Solar.Pvmodult_Sum > 1) {
+  if (esa[0].style['pointer-events'] == 'auto') {
     Plans.ESA_ID = ESA.ID
   }
   Plans.System_Installation_Plan_ID = System_installation_plan.ID
