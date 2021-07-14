@@ -876,7 +876,7 @@ function FloatingSolar_insert() {
     for (let i = 0; i < Amount; i++) {
       let Solar = {}
       Solar.ID = `FLS${thai_year}`
-      Solar.pool_number = parseInt(i)
+      Solar.pool_number = parseInt(i+1)
       // let Pvmodult_Type = document.querySelector('input[name=Pvmodult_Roof_Type]:checked')
       if (document.querySelector('input[name=pool_detail]:checked') != null) {
         if (document.querySelector('input[name=pool_detail]:checked').value != "อื่น ๆ") {
