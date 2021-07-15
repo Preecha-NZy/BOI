@@ -344,7 +344,7 @@
                     <div class="sup-content">
                         <label for="" class="sup-title">เอกสาร layout การติดตั้งบนหลังคา </label>
                         <div class="col-sub-content">
-                            <label for="Farm_doc" class="sub-title">แนบเอกสาร</label>
+                            <label for="" class="sub-title">แนบเอกสาร</label>
                             <div class="row-sub-content">
                                 <input type="file" name="solar-upload" id="Farm_doc" required>
                             </div>

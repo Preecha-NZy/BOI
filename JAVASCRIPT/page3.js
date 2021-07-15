@@ -1646,18 +1646,22 @@ function date_checked() {
 }
 
 function product_DOC() {
+  let Document_number = $('#Document_number')[0].files[0];
   form.append("Pro_DOC", Document_number.file[0])
 }
 
 function roof_DOC() {
+  let Rooftop_doc = $('#Rooftop_doc')[0].files[0];
   form.append("Roof_DOC", Rooftop_doc.file[0])
 }
 
 function farm_DOC() {
-  form.append("Farm_DOC", Rooftop_doc.file[0])
+  let Farm_doc = $('#Farm_doc')[0].files[0];
+  form.append("Farm_DOC", Farm_doc.file[0])
 }
 
 function floating_DOC() {
+  let Floating_DOC = $('#Floating_DOC')[0].files[0];
   form.append("Floating_DOC", Floating_DOC.file[0])
 }
 
@@ -1696,7 +1700,9 @@ function SendValue() {
       Solar_Request: Solar_Request,
       DOC:form,
     },
+    contentType: false,
     cache: false,
+    processData:false,
     success: function (data) {
       console.log(data)
     },
