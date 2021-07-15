@@ -1594,6 +1594,7 @@ function SYSPlan_insert() {
 }
 
 function Plans_insert() {
+  let esa = document.getElementsByClassName('ESA')
   Plans.ID = `P${thai_year}`
   if (esa[0].style['pointer-events'] == 'auto') {
     Plans.ESA_ID = ESA.ID
