@@ -1,6 +1,7 @@
 
 var Solar_cost = [0, 0, 0]
 var Inverter_cost = [0, 0, 0]
+const form = new FormData()
 var today = new Date();
 var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 var thai_year = (parseInt(today.getFullYear()) + 543) % 100
@@ -620,7 +621,6 @@ function ProductDetail_insert() {
   Product_detail.Product_Name = document.getElementById('Product_Name').value;
   Product_detail.Contract_Name = document.getElementById('Contract_Name').value;
   Product_detail.Contract_Name_Page = document.getElementById('Contract_Name_Page').value;
-  Product_detail.Document_number = document.getElementById('Document_number').value;
   Product_detail.Capacity = document.getElementById('Capacity').value;
   Product_detail.Capacity_page = document.getElementById('Capacity_Page').value;
   Product_detail.Location_No = document.getElementById('Location_No').value;
@@ -629,6 +629,7 @@ function ProductDetail_insert() {
   Product_detail.Location_district = document.getElementById('Location_district').value;
   Product_detail.Location_Province = document.getElementById('Location_Province').value;
   Product_detail.Location_Page = document.getElementById('Location_Page').value;
+  product_DOC()
 }
 
 function RooftopSolar_insert() {
@@ -641,6 +642,8 @@ function RooftopSolar_insert() {
     document.getElementById('Rooftop_doc').reportValidity()
     finish = false
     return;
+  } else {
+    roof_DOC()
   }
 
   if (Lo_type != null) {
@@ -762,6 +765,8 @@ function FarmSolar_insert() {
     document.getElementById('Farm_doc').reportValidity()
     finish = false
     return;
+  } else {
+    farm_DOC()
   }
 
   if (Lo_type != null) {
@@ -872,12 +877,14 @@ function FloatingSolar_insert() {
       document.getElementById('Floating_DOC').reportValidity()
       finish = false
       return;
+    } else {
+      floating_DOC()
     }
     Floating_Solar.Pvmodult_ID = `FLS${thai_year}`
     for (let i = 0; i < Amount; i++) {
       let Solar = {}
       Solar.ID = `FLS${thai_year}`
-      Solar.pool_number = parseInt(i+1)
+      Solar.pool_number = parseInt(i + 1)
       // let Pvmodult_Type = document.querySelector('input[name=Pvmodult_Roof_Type]:checked')
       if (document.querySelector('input[name=pool_detail]:checked') != null) {
         if (document.querySelector('input[name=pool_detail]:checked').value != "อื่น ๆ") {
@@ -1262,7 +1269,6 @@ function LocationRooftop_insert() {
   Location_Rooftop.Location_ID = `LRT${thai_year}`
   Location_Rooftop.Solar_ID = Rooftop_Solar.ID
   Location_Rooftop.Inverter_ID = Rooftop_Inverter.ID
-  Location_Rooftop.DOC = document.getElementById('Rooftop_doc').value
   Roof_valid = true
   return Roof_valid
 }
@@ -1271,7 +1277,6 @@ function LocationFarm_insert() {
   Location_Farm.Location_ID = `LFA${thai_year}`
   Location_Farm.Solar_ID = Farm_Solar.ID
   Location_Farm.Inverter_ID = Farm_Inverter.ID
-  Location_Farm.DOC = document.getElementById('Farm_doc').value
   Farm_valid = true
   return Farm_valid
 }
@@ -1280,7 +1285,6 @@ function LocationFloating_insert() {
   Location_Floating.Location_ID = `LFL${thai_year}`
   Location_Floating.Solar_ID = `FLS${thai_year}`
   Location_Floating.Inverter_ID = Floating_Inverter.ID
-  Location_Floating.DOC = document.getElementById('Floating_DOC').value
   Floating_valid = true
   return Floating_valid
 }
@@ -1641,6 +1645,22 @@ function date_checked() {
   return date
 }
 
+function product_DOC() {
+  form.append("Pro_DOC", Document_number.file[0])
+}
+
+function roof_DOC() {
+  form.append("Roof_DOC", Rooftop_doc.file[0])
+}
+
+function farm_DOC() {
+  form.append("Farm_DOC", Rooftop_doc.file[0])
+}
+
+function floating_DOC() {
+  form.append("Floating_DOC", Floating_DOC.file[0])
+}
+
 function findPos(obj) {
   var curtop = -20;
   if (obj.offsetParent) {
@@ -1673,7 +1693,8 @@ function SendValue() {
       System_installation_plan: System_installation_plan,
       ESA: ESA,
       Plans: Plans,
-      Solar_Request: Solar_Request, 
+      Solar_Request: Solar_Request,
+      DOC:form,
     },
     cache: false,
     success: function (data) {
@@ -1684,3 +1705,5 @@ function SendValue() {
     }
   });
 }
+
+
