@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="CSS/page1.css">
     <link rel="stylesheet" href="font/simplelineicons.github.io-master/simplelineicons.github.io-master/css/simple-line-icons.css">
     <script type="text/javascript" src="JAVASCRIPT/page1.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>BOI</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <title>page1</title>
 </head>
 
 <body>
@@ -23,13 +23,10 @@
             <p id="user-name"></p>
             <script>
                 <?php
-                session_start();
-                $User_ID = $_SESSION['User_ID'];
-                $User_Fname = $_SESSION['User_Fname'];
-                $User_Lname = $_SESSION['User_Lname'];
+                $User_ID = $_POST['id'];
+                $User_Fname = $_POST['fname'];
+                $User_Lname = $_POST['lname'];
                 ?>
-                // window.onload = function() {
-                // }
                 let ID = '<?php echo $User_ID; ?>'
                 let Fname = '<?php echo $User_Fname; ?>'
                 let Lname = '<?php echo $User_Lname; ?>'
@@ -37,19 +34,6 @@
                     document.getElementById('user-name').innerHTML = `${Fname} ${Lname}`
                 } else {
                     window.location.href = "index.php";
-                }
-
-                if (performance.navigation.type === 1) {
-                    $.ajax({
-                        type: "POST",
-                        url: "sesstion_Unset.php",
-                        data: {},
-                        cache: false,
-                        success: function(data) {},
-                        error: function(xhr, status, error) {}
-                    });
-                    window.location.href = "index.php";
-                    // window.location.href = "index.php";
                 }
             </script>
         </div>

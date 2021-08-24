@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/page2.css">
     <link rel="stylesheet" href="font/simplelineicons.github.io-master/simplelineicons.github.io-master/css/simple-line-icons.css">
-    <script src="JAVASCRIPT/page2.js" defer></script>
+    <script src="/JAVASCRIPT/page2.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>page2</title>
 </head>
@@ -23,10 +23,9 @@
             <p id="user-name"></p>
             <script>
                 <?php
-                session_start();
-                $User_ID = $_SESSION['User_ID'];
-                $User_Fname = $_SESSION['User_Fname'];
-                $User_Lname = $_SESSION['User_Lname'];
+                $User_ID = $_POST['id'];
+                $User_Fname = $_POST['fname'];
+                $User_Lname = $_POST['lname'];
                 ?>
                 let ID = '<?php echo $User_ID; ?>'
                 let Fname = '<?php echo $User_Fname; ?>'
@@ -34,18 +33,6 @@
                 if (Fname != '' && Lname != '') {
                     document.getElementById('user-name').innerHTML = `${Fname} ${Lname}`
                 } else {
-                    window.location.href = "index.php";
-                }
-                console.log(ID)
-                if (performance.navigation.type === 1) {
-                    $.ajax({
-                        type: "POST",
-                        url: "sesstion_Unset.php",
-                        data: {},
-                        cache: false,
-                        success: function(data) {},
-                        error: function(xhr, status, error) {}
-                    });
                     window.location.href = "index.php";
                 }
             </script>

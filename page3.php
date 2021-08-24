@@ -6,69 +6,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/page3.css">
+    <link rel="icon" href="https://boi-investment.boi.go.th/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="font/simplelineicons.github.io-master/simplelineicons.github.io-master/css/simple-line-icons.css">
+    <link rel="stylesheet" href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
     <script src="JAVASCRIPT/page3.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="font/simplelineicons.github.io-master/simplelineicons.github.io-master/css/simple-line-icons.css">
     <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
     <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
-    <link rel="stylesheet" href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
     <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
-    <title>Document</title>
+    <title>ขอรับการส่งเสริมการลงทุนสำหรับกิจการประเภท 7.1.1.2</title>
 </head>
 
 <body>
-    <header>
-        <div class="hd-left">
-            <img src="https://boi-investment.boi.go.th/img_boi/logo.png" alt="">
-        </div>
-        <div class="hd-right">
-            <i class="icon-bell"></i>
-            <img src="https://boi-investment.boi.go.th/assets/images/avatar-2.png" alt="" class="user-img">
-            <p id="user-name"></p>
-        </div>
-    </header>
+    <section style="position: fixed; width: 100%; top: 0; z-index: 20;">
+        <header>
+            <div class="hd-left">
+                <img src="https://boi-investment.boi.go.th/img_boi/logo.png" alt="">
+            </div>
+            <div class="hd-right">
+                <i class="icon-bell"></i>
+                <img src="https://boi-investment.boi.go.th/assets/images/avatar-2.png" alt="" class="user-img">
+                <p id="user-name"></p>
+            </div>
+        </header>
 
-    <section class="title-content">
-        <img src="https://boi-investment.boi.go.th/icon/icon-user-01-01.png" alt="">
-        <div class="title">
-            <h4>
-                ขอรับการส่งเสริมการลงทุนสำหรับกิจการประเภท 7.1.1.2
-            </h4>
-            <h5>
-                ยื่นคำขอรับการส่งเสริม
-            </h5>
-        </div>
+        <section class="title-content" style="background-color: #E5E5E5;">
+            <img src="https://boi-investment.boi.go.th/icon/icon-user-01-01.png" alt="">
+            <div class="title">
+                <h4>
+                    ขอรับการส่งเสริมการลงทุนสำหรับกิจการประเภท 7.1.1.2
+                </h4>
+                <h5>
+                    ยื่นคำขอรับการส่งเสริม
+                </h5>
+            </div>
+        </section>
+        <script>
+            <?php
+            $User_ID = $_POST['id'];
+            $User_Fname = $_POST['fname'];
+            $User_Lname = $_POST['lname'];
+            ?>
+            let ID = '<?php echo $User_ID; ?>'
+            let Fname = '<?php echo $User_Fname; ?>'
+            let Lname = '<?php echo $User_Lname; ?>'
+            if (Fname != '' && Lname != '') {
+                document.getElementById('user-name').innerHTML = `${Fname} ${Lname}`
+            } else {
+                window.location.href = "index.php";
+            }
+            window.onbeforeunload = function() {
+                window.scrollTo(0, 0);
+            }
+        </script>
     </section>
-    
-    <script>
-        <?php
-        session_start();
-        $User_ID = $_SESSION['User_ID'];
-        $User_Fname = $_SESSION['User_Fname'];
-        $User_Lname = $_SESSION['User_Lname'];
-        ?>
-        let ID = '<?php echo $User_ID; ?>'
-        let Fname = '<?php echo $User_Fname; ?>'
-        let Lname = '<?php echo $User_Lname; ?>'
-        if (Fname != '' && Lname != '') {
-            document.getElementById('user-name').innerHTML = `${Fname} ${Lname}`
-        } else {
-            window.location.href = "index.php";
-        }
-        // if (performance.navigation.type === 1) {
-        //     $.ajax({
-        //         type: "POST",
-        //         url: "sesstion_Unset.php",
-        //         data: {},
-        //         cache: false,
-        //         success: function(data) {},
-        //         error: function(xhr, status, error) {}
-        //     });
-        //     window.location.href = "index.php";
-        // }
-    </script>
-
-    <section class="content">
+    <section class="content" style="padding-top: 150px;">
         <ul class="tabs">
             <li data-tab-target="#tab1" class="active tab tab1" id="tab1-title">
                 1.ข้อมูลโครงการและรายละเอียดสัญญาการซื้อขาย
@@ -80,7 +72,15 @@
 
         <div class="tab-content">
             <div id="tab1" data-tab-content class="active">
-                <form action="">
+                <form action="#">
+                    <div class="sup-content">
+                        <label for="" class="sup-title">บริษัทขอรับการส่งเสริม</label>
+                        <div class="col-sub-content">
+                            <div class="row-sub-content">
+                                <input type="text" name="" id="Company" class="input-page1" placeholder="กรอกชื่อบริษัท" required>
+                            </div>
+                        </div>
+                    </div>
                     <div class="sup-content">
                         <label for="" class="sup-title">ผลิตภัณฑ์ของโครงการที่จะขอรับการส่งเสริม</label>
                         <div class="col-sub-content">
@@ -92,12 +92,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="sup-content">
+                    <div class="sup-content" style="margin-bottom: 0;">
                         <label for="" class="sup-title">บริษัทคู่สัญญาซื้อขายไฟฟ้า</label>
                         <div class="col-sub-content">
                             <div class="row-sub-content">
                                 <input class="input-page1" type="text" name="บริษัทคู่สัญญาซื้อขายไฟฟ้า" id="Contract_Name" placeholder="กรอกชื่อบริษัท" required>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="sup-content">
+                        <label for="" class="sup-title">เลขหน้าในสัญญาของบริษัทคู่สัญญาซื้อขายไฟฟ้า</label>
+                        <div class="col-sub-content">
                             <div class="row-sub-content">
                                 <input class="input-page1" type="number" name="เลขหน้าในสัญญาของบริษัทคู่สัญญาซื้อขายไฟฟ้า" id="Contract_Name_Page" onkeyup="if(this.value<0){this.value= this.value * -1}" placeholder="กรอกเลขหน้าในสัญญา" required>
                             </div>
@@ -107,7 +113,7 @@
                         </div>
                     </div>
 
-                    <div class="sup-content">
+                    <div class="sup-content" style="margin: 0;">
                         <label for="" class="sup-title">กำลังผลิตติดตั้งตามสัญญาซื้อขายไฟ</label>
                         <div class="col-sub-content">
                             <div class="row-sub-content">
@@ -115,6 +121,12 @@
                                     <input class="input-page1" type="number" name="กำลังการผลิต" id="Capacity" onkeyup="if(this.value<0){this.value= this.value * -1}" placeholder="กรอกกำลังการผลิต (เมกะวัตต์/MWp)" required>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="sup-content">
+                        <label for="" class="sup-title">เลขหน้าในสัญญาของกำลังการผลิต</label>
+                        <div class="col-sub-content">
                             <div class="row-sub-content">
                                 <div class="col-5">
                                     <input class="input-page1" type="number" name="เลขหน้าในสัญญาของกำลังการผลิต" id="Capacity_Page" onkeyup="if(this.value<0){this.value= this.value * -1}" placeholder="กรอกเลขหน้าในสัญญา" required>
@@ -344,7 +356,7 @@
                     <div class="sup-content">
                         <label for="" class="sup-title">เอกสาร layout การติดตั้งบนหลังคา </label>
                         <div class="col-sub-content">
-                            <label for="" class="sub-title">แนบเอกสาร</label>
+                            <label for="Farm_doc" class="sub-title">แนบเอกสาร</label>
                             <div class="row-sub-content">
                                 <input type="file" name="solar-upload" id="Farm_doc" required>
                             </div>
@@ -515,7 +527,7 @@
                                         <label for="" class="surfix">บ่อ</label>
                                     </div>
                                 </div>
-                                <label for="" class="sub-title">ลักษณะของอ่างเก็บน้ำ </label>
+                                <label for="" class="sub-title">ลักษณะของอ่างเก็บน้ำ</label>
                                 <div class="row-sub-content">
                                     <input type="radio" name="pool_detail" class="rad-input" id="pool_detail1" value="บ่อปูนซีเมนต์" onclick="PoolDetail_Checked()" required>
                                     <label for="pool_detail1" class="rad-text">บ่อปูนซีเมนต์</label>
@@ -534,7 +546,7 @@
                                         </div>
                                     </label>
                                 </div>
-                                <label for="" class="sub-title">ลักษณะของน้ำ </label>
+                                <label for="" class="sub-title">ลักษณะของน้ำ</label>
                                 <div class="row-sub-content">
                                     <input type="radio" name="water_detail" class="rad-input" id="water_detail1" value="น้ำดิบ" onclick="WaterDetail_Checked()" required>
                                     <label for="water_detail1" class="rad-text">น้ำดิบ</label>
@@ -759,7 +771,14 @@
                                 <label for="" class="surfix">เครื่อง</label>
                             </div>
                         </div>
-                        <label for="" class="sub-title">รวมกำลังผลิต</label>
+                        <label for="" class="sub-title">ราคาต่อเครื่อง</label>
+                        <div class="row-sub-content">
+                            <div class="ip-sf">
+                                <input type="number" name="" id="ESS_Cost" onkeyup="if(this.value<0){this.value= this.value * -1}" onchange="essCost()">
+                                <label for="" class="surfix">บาท</label>
+                            </div>
+                        </div>
+                        <label for="" class="sub-title">กำลังผลิตรวม</label>
                         <div class="row-sub-content">
                             <div class="ip-sf">
                                 <input type="number" onkeyup="if(this.value<0){this.value= this.value * -1}" name="" id="ESS_Sum" disabled required>
@@ -822,14 +841,14 @@
                             <label for="" class="sub-title" style="padding-left: 10px; font-size: 12.5px; min-width: 114px;">
                                 ระบบกักเก็บพลังงาน</label>
                             <div class="ip-sf">
-                                <input type="number" min="0" name="Machine_ESS" id="Machine_ESS" class="etc-cost" onchange=" Cost_cal()" onkeyup="if(this.value<0){this.value= this.value * -1}" style="width: auto; margin-left: 10px;" required>
+                                <input type="number" min="0" name="Machine_ESS" id="Machine_ESS" value="0"  class="etc-cost" onfocus="this.blur()" onkeyup="if(this.value<0){this.value= this.value * -1}" style="width: auto; margin-left: 10px;">
                                 <label for="" class="surfix">ล้านบาท</label>
                             </div>
                         </div>
                         <div class="row-sub-content">
                             <label for="" class="sub-title" style="padding-left: 10px; font-size: 12.5px; min-width: 114px;">อื่นๆ</label>
                             <div class="ip-sf">
-                                <input type="number" min="0" name="Machine_Equipment" id="Machine_Equipment" class="etc-cost" onchange=" Cost_cal()" onkeyup="if(this.value<0){this.value= this.value * -1}" style="width: auto; margin-left: 10px;" required>
+                                <input type="number" min="0" name="Machine_Equipment" value="0"  id="Machine_Equipment" class="etc-cost" onchange=" Cost_cal()" onkeyup="if(this.value<0){this.value= this.value * -1}" style="width: auto; margin-left: 10px;">
                                 <label for="" class="surfix">ล้านบาท</label>
                             </div>
                         </div>
@@ -929,25 +948,30 @@
                     <div class="col-sub-content">
                         <div class="sub-title">ชื่อบริษัทผู้จัดทำรายงาน ESA</div>
                         <div class="row-sub-content">
-                            <input type="text" name="" id="ESA_Name" required>
+                            <input type="text" name="" id="ESA_Name" onfocus="esaCheck(this)" required>
                         </div>
                         <label for="" class="sub-title">การศึกษาและจัดจ้างบริษัทที่ปรึกษา</label>
                         <div class="row-sub-content">
-                            <input type="month" name="mydate" id="ESA_Consult" required>
+                            <input type="month" name="mydate" id="ESA_Consult" onfocus="esaCheck(this)" required>
                         </div>
                         <label for="" class="sub-title">การศึกษาและรวบรวมข้อมูลสภาพแวดล้อมปัจจุบัน</label>
                         <div class="row-sub-content">
-                            <input type="month" name="mydate" id="ESA_Study" required>
+                            <input type="month" name="mydate" id="ESA_Study" onfocus="esaCheck(this)" required>
                         </div>
                         <label for="" class="sub-title">การประเมินผลกระทบต่อสิ่งแวดล้อมและการกำหนดมาตรการป้องกัน<br>และแก้ไขผลกระทบต่อคุณภาพสิ่งแวดล้อมและความปลอดภัย
                             (ESA)</label>
                         <div class="row-sub-content">
-                            <input type="month" name="mydate" id="ESA_Complete" required>
+                            <input type="month" name="mydate" id="ESA_Complete" onfocus="esaCheck(this)" required>
                         </div>
                     </div>
                 </div>
-                <div class="btn1" target="#tab3">
-                    <a id="go-tab3" style="color: white;" onclick="submit()"> ต่อไป</a>
+                <div style="display: flex; width: 20%; margin: 0 auto;">
+                    <div class="btn1" target="#tab1" style="background-color: #ff5252;">
+                        <a id="go-tab1" style="color: white;"> ย้อนกลับ</a>
+                    </div>
+                    <div class="btn1">
+                        <a id="go-tab3" style="color: white;" onclick="submit()"> ต่อไป</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1027,28 +1051,15 @@
         let Plan_COD = document.getElementById('Plan_COD')
         var today = new Date();
         var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-        if (parseInt(today.getMonth()) < 10){
+        if (parseInt(today.getMonth()) < 10) {
             Plan_COD.min = `${today.getFullYear()}-0${today.getMonth() + 1}`
         } else {
             Plan_COD.min = `${today.getFullYear()}-${today.getMonth() + 1}`
         }
+
         const tabs = document.querySelectorAll('[data-tab-target]')
         const tabContents = document.querySelectorAll('[data-tab-content]')
         const gos = document.querySelectorAll('[target]')
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const target = document.querySelector(tab.dataset.tabTarget)
-                tabContents.forEach(tabContent => {
-                    tabContent.classList.remove('active')
-                })
-                tabs.forEach(tab => {
-                    tab.classList.remove('active')
-                })
-                tab.classList.add('active')
-                target.classList.add('active')
-            })
-        })
-
         gos.forEach(go => {
             go.addEventListener('click', () => {
                 let x = go.getElementsByTagName('a')[0].id;
@@ -1059,7 +1070,7 @@
                     for (let i = 0; i < inputs.length; i++) {
                         if (inputs[i].id != "") {
                             if (inputs[i].value == "") {
-                                // window.scroll(0, findPos(inputs[i]));
+                                window.scroll(0, findPos(inputs[i]));
                                 inputs[i].reportValidity()
                                 count++
                                 break;
@@ -1080,22 +1091,20 @@
                             }
                         })
                     }
+                } else if (x == 'go-tab1') {
+                    let x = "tab1-title"
+                    tabs.forEach(tab => {
+                        const a = document.querySelector(tab.dataset.tabTarget)
+                        if (tab.id === x) {
+                            const target = document.querySelector(tab.dataset.tabTarget)
+                            tab.classList.add('active')
+                            target.classList.add('active')
+                        } else {
+                            a.classList.remove('active')
+                            tab.classList.remove('active')
+                        }
+                    })
                 }
-                // else if (x == 'go-tab3') {
-                //   var x = "tab3-title"
-                //   tabs.forEach(tab => {
-                //     const a = document.querySelector(tab.dataset.tabTarget)
-                //     if (tab.id === x) {
-                //       const target = document.querySelector(tab.dataset.tabTarget)
-                //       tab.classList.add('active')
-                //       target.classList.add('active')
-                //     }
-                //     else {
-                //       a.classList.remove('active')
-                //       tab.classList.remove('active')
-                //     }
-                //   })
-                // }
             })
         })
     </script>

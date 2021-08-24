@@ -1,7 +1,7 @@
 
 var Solar_cost = [0, 0, 0]
 var Inverter_cost = [0, 0, 0]
-const form = new FormData()
+var form = new FormData()
 var today = new Date();
 var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 var thai_year = (parseInt(today.getFullYear()) + 543) % 100
@@ -25,10 +25,7 @@ var System_installation_plan = {}
 var Tools = {}
 var finish = true
 
-function test(User_id, Fname, Lname) {
-  User_ID = User_id
-  User_Fname = Fname
-}
+
 
 function is_checked() {
   let roof = document.getElementById("is-roof")
@@ -190,7 +187,7 @@ function Solar_cal(capa, solar_nb, solar_cal) {
     }
     capa_array.push(capa.value)
   })
-  Project_Total.value = total_capa
+  Project_Total.value = Number.parseFloat(total_capa).toFixed(4)
   const Check_capa = (capa) => capa > 1;
   if (capa_array.some(Check_capa)) {
     ESA[0].style['pointer-events'] = 'auto';
@@ -219,7 +216,7 @@ function Inverter_cal(capa, ivt_nb, ivt_cal) {
       total_capa = total_capa + parseFloat(capa.value)
     }
   })
-  Project_ivt_Total.value = total_capa
+  Project_ivt_Total.value = Number.parseFloat(total_capa).toFixed(2)
 }
 
 function SolarCost_cal(costs) {
@@ -262,6 +259,7 @@ function RoofInverter_cal() {
   let RI_cal = document.getElementById('Inverter_Roof_Sum')
   Inverter_cal(RI_capa, RI_nb_ivt, RI_cal)
   RoofInverter_cost()
+
 }
 
 function RoofInverter_cost() {
@@ -396,7 +394,7 @@ function Cost_cal() {
   })
   let Machine_Info = document.getElementById('Machine_Info')
   let Result = document.getElementById('Result')
-  Result.value = parseFloat(cost).toFixed(4)
+  Result.value = parseFloat(cost).toFixed(3)
   Machine_Info.value = parseFloat(etc_cost).toFixed(4)
 }
 
@@ -407,6 +405,16 @@ function Esscapa_cal() {
   if (EC_capa.value != null && EC_nb_ivt != null) {
     EC_cal.value = EC_capa.value * EC_nb_ivt.value
   }
+  essCost()
+}
+
+function essCost() {
+  if (ESS_Amount.value != " " && ESS_Cost.value != '') {
+    Machine_ESS.value = Number.parseFloat((ESS_Amount.value * ESS_Cost.value) / Math.pow(10, 6)).toFixed(3)
+  } else {
+    Machine_ESS.value = 0
+  }
+  Cost_cal()
 }
 
 function haveESS() {
@@ -421,6 +429,7 @@ function haveESS() {
       inputs[index].value = '';
     }
     ESS_div[0].style.display = 'none'
+    essCost()
   }
 }
 
@@ -545,8 +554,35 @@ function addPool_input(start_nb, end_nb) {
 }
 
 function submit() {
+
   let sites = document.querySelectorAll('input[name=installation-site]:checked')
   let count = 0
+  const keys = [];
+  for (const key of form.keys()) {
+    keys.push(key);
+  }
+  for (const idx in keys) {
+    form.delete(keys[idx]);
+  }
+  Rooftop_Solar = {}
+  Rooftop_Inverter = {}
+  Farm_Solar = {}
+  Farm_Inverter = {}
+  Floating_Solar = []
+  Floating_Inverter = {}
+  Investment_Detail = {}
+  Location_Rooftop = {}
+  Location_Farm = {}
+  Location_Floating = {}
+  Equipment = []
+  ESA = {}
+  ESS = {}
+  Plans = {}
+  Product_detail = {}
+  Solar_Request = {}
+  System_installation_plan = {}
+  Tools = {}
+  ProductDetail_insert()
   if (sites.length > 0) {
     for (let i = 0; i < sites.length; i++) {
       if (sites[i].value == 'Rooftop') {
@@ -593,24 +629,25 @@ function submit() {
     Plans_insert()
     SolarRequest_insert()
     if (finish) {
-      console.log(JSON.stringify(Product_detail, null, 4))
-      console.log(JSON.stringify(Rooftop_Solar, null, 4))
-      console.log(JSON.stringify(Rooftop_Inverter, null, 4))
-      console.log(JSON.stringify(Location_Rooftop, null, 4))
-      console.log(JSON.stringify(Farm_Solar, null, 4))
-      console.log(JSON.stringify(Farm_Inverter, null, 4))
-      console.log(JSON.stringify(Location_Farm, null, 4))
-      console.log(JSON.stringify(Floating_Solar, null, 4))
-      console.log(JSON.stringify(Floating_Inverter, null, 4))
-      console.log(JSON.stringify(Location_Floating, null, 4))
-      console.log(JSON.stringify(ESS, null, 4))
-      console.log(JSON.stringify(Equipment, null, 4))
-      console.log(JSON.stringify(Tools, null, 4))
-      console.log(JSON.stringify(Investment_Detail, null, 4))
-      console.log(JSON.stringify(System_installation_plan, null, 4))
-      console.log(JSON.stringify(ESA, null, 4))
-      console.log(JSON.stringify(Plans, null, 4))
-      console.log(JSON.stringify(Solar_Request, null, 4))
+      form.append('Name', `${Fname} ${Lname}`)
+      // console.log(JSON.stringify(Product_detail, null, 4))
+      // console.log(JSON.stringify(Rooftop_Solar, null, 4))
+      // console.log(JSON.stringify(Rooftop_Inverter, null, 4))
+      // console.log(JSON.stringify(Location_Rooftop, null, 4))
+      // console.log(JSON.stringify(Farm_Solar, null, 4))
+      // console.log(JSON.stringify(Farm_Inverter, null, 4))
+      // console.log(JSON.stringify(Location_Farm, null, 4))
+      // console.log(JSON.stringify(Floating_Solar, null, 4))
+      // console.log(JSON.stringify(Floating_Inverter, null, 4))
+      // console.log(JSON.stringify(Location_Floating, null, 4))
+      // console.log(JSON.stringify(ESS, null, 4))
+      // console.log(JSON.stringify(Equipment, null, 4))
+      // console.log(JSON.stringify(Tools, null, 4))
+      // console.log(JSON.stringify(Investment_Detail, null, 4))
+      // console.log(JSON.stringify(System_installation_plan, null, 4))
+      // console.log(JSON.stringify(ESA, null, 4))
+      // console.log(JSON.stringify(Plans, null, 4))
+      // console.log(JSON.stringify(Solar_Request, null, 4))
       SendValue()
     }
   }
@@ -618,6 +655,7 @@ function submit() {
 
 function ProductDetail_insert() {
   Product_detail.ID = `PDD${thai_year}`
+  Product_detail.Company = document.getElementById('Company').value;
   Product_detail.Product_Name = document.getElementById('Product_Name').value;
   Product_detail.Contract_Name = document.getElementById('Contract_Name').value;
   Product_detail.Contract_Name_Page = document.getElementById('Contract_Name_Page').value;
@@ -629,6 +667,7 @@ function ProductDetail_insert() {
   Product_detail.Location_district = document.getElementById('Location_district').value;
   Product_detail.Location_Province = document.getElementById('Location_Province').value;
   Product_detail.Location_Page = document.getElementById('Location_Page').value;
+  form.append('Product_detail', JSON.stringify(Product_detail, null, 4));
   product_DOC()
 }
 
@@ -751,6 +790,7 @@ function RooftopSolar_insert() {
     return;
   }
   finish = true
+  form.append('Rooftop_Solar', JSON.stringify(Rooftop_Solar, null, 4))
   let Roof_valid = RooftopInverter_insert()
   return Roof_valid
 }
@@ -863,6 +903,7 @@ function FarmSolar_insert() {
     return;
   }
   finish = true
+  form.append('Farm_Solar', JSON.stringify(Farm_Solar, null, 4))
   let Farm_valid = FarmInverter_insert()
   return Farm_valid
 }
@@ -1046,6 +1087,7 @@ function FloatingSolar_insert() {
       Solar_nb.push(Solar)
     }
     Floating_Solar = Solar_nb
+    form.append('Floating_Solar', JSON.stringify(Floating_Solar, null, 4))
     Floating_valid = FloatingInverter_insert()
     finish = true
     return Floating_valid
@@ -1122,12 +1164,12 @@ function RooftopInverter_insert() {
     return;
   }
   finish = true
+  form.append('Rooftop_Inverter', JSON.stringify(Rooftop_Inverter, null, 4))
   let Roof_valid = LocationRooftop_insert()
   return Roof_valid
 }
 
 function FarmInverter_insert() {
-  // console.log('Farm call')
   Farm_Inverter.ID = `FAI${thai_year}`
   if (document.getElementById('Inverter_Farm_Model').value != '')
     Farm_Inverter.Model = document.getElementById('Inverter_Farm_Model').value;
@@ -1192,6 +1234,7 @@ function FarmInverter_insert() {
     return;
   }
   finish = true
+  form.append('Farm_Inverter', JSON.stringify(Farm_Inverter, null, 4))
   let Farm_valid = LocationFarm_insert()
   return Farm_valid
 }
@@ -1261,6 +1304,7 @@ function FloatingInverter_insert() {
     return;
   }
   finish = true
+  form.append('Floating_Inverter', JSON.stringify(Floating_Inverter, null, 4))
   Floating_valid = LocationFloating_insert()
   return Floating_valid
 }
@@ -1269,6 +1313,7 @@ function LocationRooftop_insert() {
   Location_Rooftop.Location_ID = `LRT${thai_year}`
   Location_Rooftop.Solar_ID = Rooftop_Solar.ID
   Location_Rooftop.Inverter_ID = Rooftop_Inverter.ID
+  form.append('Location_Rooftop', JSON.stringify(Location_Rooftop, null, 4))
   Roof_valid = true
   return Roof_valid
 }
@@ -1277,6 +1322,7 @@ function LocationFarm_insert() {
   Location_Farm.Location_ID = `LFA${thai_year}`
   Location_Farm.Solar_ID = Farm_Solar.ID
   Location_Farm.Inverter_ID = Farm_Inverter.ID
+  form.append('Location_Farm', JSON.stringify(Location_Farm, null, 4))
   Farm_valid = true
   return Farm_valid
 }
@@ -1286,6 +1332,7 @@ function LocationFloating_insert() {
   Location_Floating.Solar_ID = `FLS${thai_year}`
   Location_Floating.Inverter_ID = Floating_Inverter.ID
   Floating_valid = true
+  form.append('Location_Floating', JSON.stringify(Location_Floating, null, 4))
   return Floating_valid
 }
 
@@ -1293,9 +1340,11 @@ function ESS_insert() {
   let ess = document.querySelector('input[name=have-ess]:checked')
   if (ess != null) {
     ESS.ID = `ESS${thai_year}`
-    if (document.getElementById('ESS_doc').value != null && document.getElementById('ESS_doc').value != '')
-      ESS.DOC = document.getElementById('ESS_doc').value;
-    else {
+
+    let ESS_doc = $('#ESS_doc')[0].files[0];
+    if (ESS_doc != null) {
+      form.append("ESS_DOC", ESS_doc)
+    } else {
       window.scroll(0, findPos(document.getElementById('ESS_doc')));
       document.getElementById('ESS_doc').reportValidity()
       finish = false
@@ -1355,6 +1404,7 @@ function ESS_insert() {
       finish = false
       return;
     }
+    form.append('ESS', JSON.stringify(ESS, null, 4))
   }
   finish = true
   return true
@@ -1363,6 +1413,7 @@ function ESS_insert() {
 function Equipment_insert() {
   let Amount = document.querySelectorAll('.etc-input')
   Equipment.length = 0
+  let e = []
   if (Amount.length > 1) {
     for (let i = 1; i < Amount.length; i++) {
       let ETC = {}
@@ -1376,15 +1427,17 @@ function Equipment_insert() {
         finish = false
         return;
       }
-      Equipment.push(ETC)
+      e.push(ETC)
     }
+    Equipment = e
+    form.append('Equipment', JSON.stringify(Equipment, null, 4))
   }
   finish = true
   return true
 }
 
 function Tools_insert() {
-  Tools.id = `T${thai_year}`
+  Tools.ID = `T${thai_year}`
   Tools.Product_ID = Product_detail.ID
   Tools.Location_Rooftop_ID = Location_Rooftop.Location_ID
   Tools.Location_Farm_ID = Location_Farm.Location_ID
@@ -1393,6 +1446,7 @@ function Tools_insert() {
   Tools.Equipment_ID = `EQP${thai_year}`
   Tools.Pvmodult_Total = parseFloat(Project_Total.value)
   Tools.Inverter_Total = parseFloat(Project_ivt_Total.value)
+  form.append('Tools', JSON.stringify(Tools, null, 4))
 }
 
 function ESA_insert() {
@@ -1434,6 +1488,7 @@ function ESA_insert() {
       finish = false
       return;
     }
+    form.append('ESA', JSON.stringify(ESA, null, 4))
     finish = true
   }
 }
@@ -1457,27 +1512,15 @@ function InvestmentDetail_insert() {
     finish = false
     return;
   }
-
+  
   Investment_Detail.Machine_Pvmodule = parseFloat(document.getElementById('Machine_Pvmodule').value)
   Investment_Detail.Machine_Inverter = parseFloat(document.getElementById('Machine_Inverter').value);
 
   if (document.getElementById('Machine_ESS').value != '')
     Investment_Detail.Machine_ESS = parseFloat(document.getElementById('Machine_ESS').value);
-  else {
-    window.scroll(0, findPos(document.getElementById('Machine_ESS')));
-    document.getElementById('Machine_ESS').reportValidity()
-    finish = false
-    return;
-  }
 
   if (document.getElementById('Machine_Equipment').value != '')
     Investment_Detail.Machine_Equipment = parseFloat(document.getElementById('Machine_Equipment').value);
-  else {
-    window.scroll(0, findPos(document.getElementById('Machine_Equipment')));
-    document.getElementById('Machine_Equipment').reportValidity()
-    finish = false
-    return;
-  }
 
   Investment_Detail.Machine_Info = parseFloat(document.getElementById('Machine_Info').value);
 
@@ -1552,6 +1595,7 @@ function InvestmentDetail_insert() {
     finish = false
     return;
   }
+  form.append('Investment_Detail', JSON.stringify(Investment_Detail, null, 4))
   finish = true
   return true
 }
@@ -1593,6 +1637,7 @@ function SYSPlan_insert() {
     finish = false
     return;
   }
+  form.append('System_installation_plan', JSON.stringify(System_installation_plan, null, 4))
   finish = true
   return true
 }
@@ -1604,17 +1649,20 @@ function Plans_insert() {
     Plans.ESA_ID = ESA.ID
   }
   Plans.System_Installation_Plan_ID = System_installation_plan.ID
+  form.append('Plans', JSON.stringify(Plans, null, 4))
 }
 
 function SolarRequest_insert() {
+  Solar_Request.doc_no = `${thai_year}`
   Solar_Request.ProductDetail_ID = Product_detail.ID
   Solar_Request.InvestmentDetail_ID = Investment_Detail.ID
   Solar_Request.Plans_ID = Plans.ID
   Solar_Request.User_ID = ID
-  Solar_Request.Submit_Time = date_checked()
+  Solar_Request.Submit_Time = getDate()
+  form.append('Solar_Request', JSON.stringify(Solar_Request, null, 4))
 }
 
-function date_checked() {
+function getDate() {
   let today = new Date()
   let year = today.getFullYear()
   let month
@@ -1647,26 +1695,37 @@ function date_checked() {
 
 function product_DOC() {
   let Document_number = $('#Document_number')[0].files[0];
-  form.append("Pro_DOC", Document_number.file[0])
+  if (Document_number != null) {
+    form.append("Pro_DOC", Document_number)
+  } else {
+    finish = false
+  }
+
 }
 
 function roof_DOC() {
   let Rooftop_doc = $('#Rooftop_doc')[0].files[0];
-  form.append("Roof_DOC", Rooftop_doc.file[0])
+  if (Rooftop_doc != null) {
+    form.append("Roof_DOC", Rooftop_doc)
+  }
 }
 
 function farm_DOC() {
   let Farm_doc = $('#Farm_doc')[0].files[0];
-  form.append("Farm_DOC", Farm_doc.file[0])
+  if (Farm_doc != null) {
+    form.append("Farm_DOC", Farm_doc)
+  }
 }
 
 function floating_DOC() {
   let Floating_DOC = $('#Floating_DOC')[0].files[0];
-  form.append("Floating_DOC", Floating_DOC.file[0])
+  if (Floating_DOC != null) {
+    form.append("Floating_DOC", Floating_DOC)
+  }
 }
 
 function findPos(obj) {
-  var curtop = -20;
+  var curtop = -150;
   if (obj.offsetParent) {
     do {
       curtop += obj.offsetTop;
@@ -1676,40 +1735,34 @@ function findPos(obj) {
 }
 
 function SendValue() {
+  let name = `${Fname} ${Lname}`
+  form.append('Name', name)
   $.ajax({
     type: "POST",
     url: "User_insert.php",
-    data: {
-      Product_detail: Product_detail,
-      Rooftop_Solar: Rooftop_Solar,
-      Rooftop_Inverter: Rooftop_Inverter,
-      Location_Rooftop: Location_Rooftop,
-      Farm_Solar: Farm_Solar,
-      Farm_Inverter: Farm_Inverter,
-      Location_Farm: Location_Farm,
-      Floating_Solar: Floating_Solar,
-      Floating_Inverter: Floating_Inverter,
-      Location_Floating: Location_Floating,
-      ESS: ESS,
-      Equipment: Equipment,
-      Tools: Tools,
-      Investment_Detail: Investment_Detail,
-      System_installation_plan: System_installation_plan,
-      ESA: ESA,
-      Plans: Plans,
-      Solar_Request: Solar_Request,
-      DOC:form,
-    },
+    data: form,
     contentType: false,
     cache: false,
-    processData:false,
+    processData: false,
     success: function (data) {
-      console.log(data)
+      if (data != 'Restart') {
+        alert(`${data}`)
+        window.location.href = "index.php";
+      } else {
+        location.reload();
+      }
     },
-    error: function (xhr, status, error) {
-      alert("มีอะไรผิด")
+    error: function (xhr, status, error, data) {
+      console.log(`${error}`)
+      console.log(`${data}`)
     }
   });
 }
 
 
+function esaCheck(element) {
+  let esa = document.getElementsByClassName('ESA')
+  if (esa[0].style['pointer-events'] != 'auto') {
+    element.blur()
+  }
+}

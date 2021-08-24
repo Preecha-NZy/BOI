@@ -1,19 +1,23 @@
+let c = []
+
 function login() {
-    let login_inputs = document.querySelectorAll('.login_input')
+    let inputs = document.querySelectorAll('input')
     let count = 0
-    for (let i = 0; i < login_inputs.length; i++) {
-        if (login_inputs[i].value == '') {
-            login_inputs[i].reportValidity()
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].value == "" || inputs[i].value == null) {
+            inputs[i].reportValidity()
             count++
             break;
         }
     }
     if (count == 0) {
-        var user_ID = login_inputs[0].value
-        var password = login_inputs[1].value
+        var user_ID = inputs[0].value
+        var password = inputs[1].value
+        console.log(user_ID)
+        console.log(password)
         $.ajax({
             type: "POST",
-            url: "login_check.php",
+            url: "adminLogin.php",
             data: {
                 ID: user_ID,
                 Password: password
@@ -25,12 +29,13 @@ function login() {
                 name.id = loginInfo[0]['id']
                 name.fname = loginInfo[0]['Fname']
                 name.lname = loginInfo[0]['Lname']
-                redirectPost('page1.php', name)
+                name.position = loginInfo[0]['Position']
+                redirectPost('investment_menu.php', name)
             },
-            error: function (xhr, status, error,data) {
+            error: function (xhr, status, error, data) {
                 alert("ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง")
-                login_inputs.forEach(input => {
-                    input.value =''
+                inputs.forEach(input => {
+                    input.value = ''
                 })
             }
         });

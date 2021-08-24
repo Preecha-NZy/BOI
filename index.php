@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/index.css">
-    <link rel="stylesheet"
-        href="font/simplelineicons.github.io-master/simplelineicons.github.io-master/css/simple-line-icons.css">
+    <link rel="stylesheet" href="font/simplelineicons.github.io-master/simplelineicons.github.io-master/css/simple-line-icons.css">
+    <link rel="icon" href="https://boi-investment.boi.go.th/assets/images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="JAVASCRIPT/index.js" defer></script>
@@ -84,14 +85,12 @@
                             </div>
                             <div class="form-space">
                                 <button type="button" class="btn btn-form">
-                                    <a style="color: #FDFEFE"
-                                        href="https://feedback.boi.go.th/index.php?app=e-investment2">แบบสำรวจความพึงพอใจ</a>
+                                    <a style="color: #FDFEFE" href="https://feedback.boi.go.th/index.php?app=e-investment2">แบบสำรวจความพึงพอใจ</a>
                                 </button>
                             </div>
                             <div class="form-space">
                                 <button type="button" class="btn btn-contact">
-                                    <a style="color: #FDFEFE"
-                                        href="https://boi-investment.boi.go.th/public/contact_new.pdf">ติดต่อเจ้าหน้าที่</a>
+                                    <a style="color: #FDFEFE" href="https://boi-investment.boi.go.th/public/contact_new.pdf">ติดต่อเจ้าหน้าที่</a>
                                 </button>
                             </div>
                             <div class="row-sub-box">
@@ -99,8 +98,7 @@
                                     <a href="https://boi-investment.boi.go.th/public/index.php#">
                                         <div class="border-white">
                                             <div class="center">
-                                                <img src="https://boi-investment.boi.go.th/public/images/icon_01.png"
-                                                    title="ลงทะเบียนเข้าใช้งานระบบ">
+                                                <img src="https://boi-investment.boi.go.th/public/images/icon_01.png" title="ลงทะเบียนเข้าใช้งานระบบ">
                                             </div>
                                             <div class="center text-white">ลงทะเบียนเข้าใช้งานระบบ</div>
                                         </div>
@@ -110,20 +108,17 @@
                                     <a href="https://boi-investment.boi.go.th/public/index.php#">
                                         <div class="border-white">
                                             <div class="center">
-                                                <img src="	https://boi-investment.boi.go.th/public/images/icon_02.png"
-                                                    title="ลงทะเบียนแล้วไม่ได้รับอีเมล์">
+                                                <img src="	https://boi-investment.boi.go.th/public/images/icon_02.png" title="ลงทะเบียนแล้วไม่ได้รับอีเมล์">
                                             </div>
                                             <div class="center text-white">ลงทะเบียนแล้วไม่ได้รับอีเมล์</div>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="sub-box">
-                                    <a
-                                        href="https://boi-investment.boi.go.th/report/E-Investment-Applicant%20for%20promotion.pdf">
+                                    <a href="https://boi-investment.boi.go.th/report/E-Investment-Applicant%20for%20promotion.pdf">
                                         <div class="border-white">
                                             <div class="center">
-                                                <img src="https://boi-investment.boi.go.th/public/images/icon_03.png"
-                                                    title="คู่มือการใช้งาน">
+                                                <img src="https://boi-investment.boi.go.th/public/images/icon_03.png" title="คู่มือการใช้งาน">
                                             </div>
                                             <div class="center text-white">คู่มือการใช้งาน</div>
                                         </div>
