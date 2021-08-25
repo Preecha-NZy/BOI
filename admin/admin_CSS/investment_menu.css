@@ -1,0 +1,145 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.html, body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #E5E5E5;
+}
+
+header {
+    background-color: #275b90;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+    max-height: 50px;
+}
+
+.hd-left {
+    display: inline;
+    position: relative;
+    top: -2px;
+    justify-content: center;
+}
+
+.hd-right {
+    font-size: 15px;
+    display: flex;
+    width: 100%;
+    max-width: fit-content;
+    padding: 0 20px;
+    align-items: center;
+}
+
+h4 {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 1.50rem;
+    margin: 5px 10px 10px;
+}
+
+.icon-bell {
+    color: white;
+}
+
+.user-img {
+    max-height: 40px;
+    border: 2px solid rgba(204, 203, 203, 0.425);
+    border-radius: 50%;
+    position: relative;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.title-content {
+    display: flex;
+    padding: 10px 10px 0;
+}
+
+.title {
+    margin: 3px 10px 5px;
+    line-height: 1.1;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    background-color: white;
+    height: fit-content;
+    padding: 30px 20px;
+    margin: 0px 10px;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1px 2px rgb(0 0 0 / 5%), 0 -2px 1px -2px rgb(0 0 0 / 4%), 0 0 0 -1px rgb(0 0 0 / 5%);
+}
+
+.sub-content {
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+    padding: 30px 20px;
+    margin: 0px 10px;
+}
+
+.btn-sub-content{
+    background-color: white;
+    width: 28%;
+    padding: 30px 20px;
+    margin: 0px 15px;
+    margin-bottom: 30px;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1px 2px rgb(0 0 0 / 5%), 0 -2px 1px -2px rgb(0 0 0 / 4%), 0 0 0 -1px rgb(0 0 0 / 5%);
+    cursor: pointer;
+}
+
+.box-content{
+    background-color: white;
+    width: 28%;
+    padding: 30px 20px;
+    margin: 0px 15px;
+    margin-bottom: 30px;
+    border-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1px 2px rgb(0 0 0 / 5%), 0 -2px 1px -2px rgb(0 0 0 / 4%), 0 0 0 -1px rgb(0 0 0 / 5%);
+    cursor: pointer;
+}
+
+.img-center{
+    text-align: -webkit-center;
+    position: relative;
+}
+
+.text-center{
+	text-align: -webkit-center;
+    padding: 20px 0 5px;
+}
+
+.title h4 {
+    font-size: 25px;
+    font-weight: 600;
+    color: #373A3C;
+}
+
+.title h5 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#user-name {
+    font-weight: 400;
+    font-size: 15px;
+    color: white;
+}
+
+.main-content {
+    background-color: white;
+    height:auto;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 20px;
+    padding-top: 50px;
+}
+
