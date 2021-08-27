@@ -501,6 +501,10 @@ input:checked {
     position: relative;
 }
 
+.zone1 {
+    pointer-events: none;
+}
+
 .comment-box {
     display: flex;
     flex-direction: column;

@@ -5,7 +5,7 @@ class adminDB
     function __construct()
     {
         $serverName = "10.111.41.206";
-        $connectionInfo = array("Database" => "boi_solar", "UID" => "solar-user", "PWD" => "nl69KSAuNLE24mR5ytLCj8XI4", "Characterset" => "UTF-8");
+        $connectionInfo = array("Database" => "boi_solar", "UID" => "solar-user", "PWD" => "nl69KSAuNLE24mR5ytLCj8XI4", "Characterset" => "UTF-8");        
         $conn = sqlsrv_connect($serverName, $connectionInfo);
         $this->dbcon = $conn;
         if ($conn === false) {
@@ -667,5 +667,22 @@ class adminDB
             $i += 1;
         }
         return $edit;
+    }
+
+    public function fetch_request($fname, $lname) {
+
+        $request = [];
+        $name = $fname." ".$lname;
+        $i = 0;
+        $sql = "select [ผู้ยื่นคำขอ], [doc_no]
+                    from [ธุรกรรมล่าสุด] where [ชื่อตัวแทน] = '".$name."'";
+        $result = sqlsrv_query($this->dbcon, $sql);
+        while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
+            $keys = array_keys($row);
+            $request[$i]['companyName'] = $row[$keys[0]];
+            $request[$i]['doc_no'] = $row[$keys[1]];
+            $i += 1;
+        }
+        return $request;
     }
 }

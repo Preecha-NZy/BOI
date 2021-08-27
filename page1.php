@@ -31,6 +31,7 @@
         </div>
 
         <div class="hd-right">
+            <i class="icon-magnifier" style="margin-right: 10px; position: relative;" onclick="togglePopup1()"></i>
             <i class="icon-bell" style="margin-right: 10px; position: relative;" onclick="togglePopup()">
                 <div class="count"></div>
             </i>
@@ -97,15 +98,37 @@
             <div class="head-btn edit-btn" style="height: 30px;" onclick="editRequest()">แก้ไขคำขอส่งเสริม</div>
         </div>
     </div>
+
+    <div class="assign-popup" id="popup1">
+        <div class="overlay"></div>
+        <div class="popup-content">
+            <div class="close-btn" onclick="togglePopup1()">&times;</div>
+            <div class="popup-row" style="display: flex; justify-content: center; font-size: 15px; font-weight: 600;">
+                ค้นหาคำขอรับการส่งเสริม
+            </div>
+            <div class="popup-row">
+                <div class="popup-sup-content">
+                    ชื่อบริษัทรับการส่งเสริม
+                </div>
+                <div class="popup-sub-content" id="requestNumber">
+                    <select name="" id="companyName1"></select>
+                </div>
+            </div>
+            <div class="head-btn edit-btn" style="height: 30px;" onclick="viewRequest()">ดูคำขอส่งเสริม</div>
+        </div>
+    </div>
+
     <?php
     include_once('admin/adminDB.php');
     $fetchData = new adminDB();
     $count = $fetchData->fetch_editCount($User_ID);
     $editData = $fetchData->fetch_edit($User_ID);
+    $request = $fetchData->fetch_request($User_Fname, $User_Lname);
     ?>
     <script>
         const count = JSON.parse(JSON.stringify(<?php echo json_encode($count, JSON_PRETTY_PRINT); ?>, null, 4));
         const editData = JSON.parse(JSON.stringify(<?php echo json_encode($editData, JSON_PRETTY_PRINT); ?>, null, 4));
+        const request = JSON.parse(JSON.stringify(<?php echo json_encode($request, JSON_PRETTY_PRINT); ?>, null, 4));
         if (count > 0) {
             document.getElementsByClassName('count')[0].innerHTML = `${count}`
             document.getElementsByClassName('count')[0].style.display = 'flex'
@@ -116,6 +139,9 @@
             }
         }
 
+        for (let i = 0; i < request.length; i++) {
+            add_request(request[i]['companyName'],i)
+        }
     </script>
 </body>
 

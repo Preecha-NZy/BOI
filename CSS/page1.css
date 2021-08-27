@@ -47,6 +47,11 @@ h4 {
     cursor: pointer;
 }
 
+.icon-magnifier {
+    color: white;
+    cursor: pointer;
+}
+
 .count {
     width: 10px;
     height: 10px;
