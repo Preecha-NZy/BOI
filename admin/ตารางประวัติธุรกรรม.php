@@ -47,7 +47,6 @@
             let Lname = '<?php echo $Lname; ?>'
             let Position = '<?php echo $Position; ?>'
             let Doc_no = '<?php echo $doc_no; ?>'
-            console.log(Position)
             if (Fname != '' && Lname != '') {
                 document.getElementById('user-name').innerHTML = `${Fname} ${Lname}`
             } else {
@@ -91,9 +90,7 @@
                 $fetchData = new adminDB();
                 $sql = $fetchData->fetchRequestHistory($doc_no);
                 ?>
-                // console.log(Position)
                 const sql1 = JSON.parse(JSON.stringify(<?php echo json_encode($sql, JSON_PRETTY_PRINT); ?>, null, 4));
-                console.log(sql1)
                 addRow(sql1, sql1['length'])
 
                 function addRow(data, rowLength) {
@@ -101,7 +98,6 @@
                     for (i = 0; i < rowLength; i++) {
                         let name;
                         let staus;
-                        console.log(data[i]['สถานะ'])
                         if (data[i]['สถานะ'] == 'รอยืนยันคำขอ') {
                             name = data[i]['ชื่อผู้มอบหมาย']
                             staus = 'ยื่นคำขอ'

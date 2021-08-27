@@ -86,7 +86,6 @@ function changeYear(dateTime) {
 
 
 function receiveRequest() {
-    console.log(status)
     if (status === 'รอยืนยันคำขอ') {
         let data = new FormData()
         let date = getDate()

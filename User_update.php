@@ -17,7 +17,7 @@ if ($konn === false) {
 //----------------------INSERT Product detail and Document-------------------------------------//
 function  update_Product_detail($Product_id, $Product_Name, $Company, $Contract_Name, $Contract_Name_Page, $Capacity, $Capacity_Page, $Location_No, $Location_Street, $Location_Subdistrict, $Location_district, $Location_Province, $Location_Page, $conn)
 {
-    $sql2 = "UPDATE Product_Detail SET  Product_Name=?, Company_Name=?, Contract_Name=?, Contract_Name_Page=?, Capacity=?, Capacity_Page=?, Location_No=?, Location_Street=?, Location_Subdistrict=?, Location_district=?, Location_Province=?, Location_Page=? WHERE Product_id= ?;";
+    $sql2 = "UPDATE Product_Detail SET  Product_Name=?, Company_Name=?, Contract_Name=?,Contract_Name_Page=?, Capacity=?, Capacity_Page=?, Location_No=?, Location_Street=?, Location_Subdistrict=?, Location_district=?, Location_Province=?, Location_Page=? WHERE Product_id= ?;";
     $params = array($Product_Name, $Company, $Contract_Name, $Contract_Name_Page, $Capacity, $Capacity_Page, $Location_No, $Location_Street, $Location_Subdistrict, $Location_district, $Location_Province, $Location_Page, $Product_id);
     $r_data = sqlsrv_query($conn, $sql2, $params);
     if ($r_data === false) {
@@ -241,7 +241,7 @@ function update_ESA($ESA_ID, $Name, $Consult, $Study, $Complete, $conn)
 
 //-----------------------------------------------------------------------------------------------//
 
-function insertTransaction($doc_no, $requestNumber, $date, $conn)
+function insertTransaction($doc_no, $requestNumber, $date, $companyName,$conn)
 {
     $requestDate = get_requestDate($doc_no, $conn);
     $assigneeName = get_assigneeName($doc_no, $conn);
@@ -260,19 +260,28 @@ function insertTransaction($doc_no, $requestNumber, $date, $conn)
         echo "ERROR 24 : #";
         die(print_r(sqlsrv_errors(), true));
     } else {
-        update_currentTransaction($doc_no, $assigneeName, $assignorName, $date, $status, $conn);
+        update_currentTransaction($doc_no, $assigneeName, $assignorName, $date, $status, $companyName,$conn);
     }
 }
 
-function update_currentTransaction($doc_no, $assigneeName, $assignorName, $date, $status, $conn)
+function update_currentTransaction($doc_no, $assigneeName, $assignorName, $date, $status, $companyName,$conn)
 {
-
-    $sql = "update ธุรกรรมล่าสุด set   วันที่ปรับปรุงล่าสุด = ?,
-                                        ชื่อผู้มอบหมาย = ?,
-                                        ชื่อผู้รับมอบหมาย = ?,
-                                        สถานะ = ? where doc_no = '" . $doc_no . "'";
-    $params = array($date, $assignorName, $assigneeName, $status);
-    $r_data = sqlsrv_query($conn, $sql, $params);
+    if (!isset($companyName)) {
+        $sql = "update ธุรกรรมล่าสุด set   วันที่ปรับปรุงล่าสุด = ?,
+                                            ชื่อผู้มอบหมาย = ?,
+                                            ชื่อผู้รับมอบหมาย = ?,
+                                            สถานะ = ? where doc_no = '" . $doc_no . "'";
+        $params = array($date, $assignorName, $assigneeName, $status);
+        $r_data = sqlsrv_query($conn, $sql, $params);
+    } else {
+        $sql = "update ธุรกรรมล่าสุด set   วันที่ปรับปรุงล่าสุด = ?,
+                                            ชื่อผู้มอบหมาย = ?,
+                                            ชื่อผู้รับมอบหมาย = ?,
+                                            ผู้ยื่นคำขอ = ?,
+                                            สถานะ = ? where doc_no = '" . $doc_no . "'";
+        $params = array($date, $assignorName, $assigneeName, $companyName, $status);
+        $r_data = sqlsrv_query($conn, $sql, $params);
+    }
 
     if ($r_data === false) {
         echo "ERROR 25 : #";
@@ -871,7 +880,7 @@ if (!is_null($_POST['deleteESA'])) {
     deleteESA($ESA_ID, $conn);
 }
 
-insertTransaction($doc_no, $Request_Number, $date, $conn);
+insertTransaction($doc_no, $Request_Number, $date, $Product_detail['Company'] ,$conn);
 updateEditHistory($doc_no, $conn);
 
 

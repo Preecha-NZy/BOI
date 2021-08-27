@@ -45,7 +45,6 @@
             let Fname = '<?php echo $Fname; ?>'
             let Lname = '<?php echo $Lname; ?>'
             let Position = '<?php echo $Position; ?>'
-            // console.log(Position)
             if (Fname != '' && Lname != '') {
                 document.getElementById('user-name').innerHTML = `${Fname} ${Lname}`
             } else {
