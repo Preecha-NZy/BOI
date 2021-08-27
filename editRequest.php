@@ -73,6 +73,7 @@
         }
         ?>
         <script>
+            let split = []
             let ID = '<?php echo $User_ID; ?>'
             let Fname = '<?php echo $User_Fname; ?>'
             let Lname = '<?php echo $User_Lname; ?>'
@@ -82,7 +83,7 @@
             let editComment = '<?php echo $editComment; ?>'
             let editTimes = '<?php echo $editTimes; ?>'
             let editStatus = '<?php echo $editStatus; ?>'
-            let split = editZone.split(",")
+            split  = editZone.split(",")
             if (Fname != '' && Lname != '') {
                 document.getElementById('user-name').innerHTML = `${Fname} ${Lname}`
             } else {
@@ -1019,6 +1020,13 @@
             document.getElementsByClassName('ESA')[0].style.display = 'block'
             addESA(esa)
         }
+
+        RoofSolar_cal()
+        RoofInverter_cal()
+        GroundSolar_cal()
+        GroundInverter_cal()
+        FloatingSolar_cal()
+        FloatingInverter_cal()
     </script>
 
     <script>
@@ -1042,7 +1050,6 @@
                 inputs.forEach(input => {
                     input.onfocus = blur()
                 })
-                // console.log(div)
             }
         })
         document.getElementById('editInfo').value = `${editComment}`

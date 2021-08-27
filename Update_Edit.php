@@ -25,4 +25,4 @@ $Edit_tables=null; #ข้อมูลที่จะแก้ไข
 $info=null;#รายละเอียด
 $No=null;#แก้ครังที่
 $Status=null;#สถานะ
-insert_edit($Doc_no, $Edit_tables , $info, $No, $Status,$conn);
+update_edit($Doc_no, $Edit_tables , $info, $No, $Status,$conn);

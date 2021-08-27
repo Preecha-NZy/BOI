@@ -75,6 +75,7 @@
         </section>
     </section>
     <script>
+        // if (Status != 'อยู่ระหว่างตรวจสอบแก้ไข' && Status != "รอยืนยันคำขอ" ) {
         if (Status != 'อยู่ระหว่างตรวจสอบแก้ไข') {
             document.getElementsByClassName('edit-btn')[0].style.display = 'none'
             document.getElementsByClassName('home-btn')[0].style.marginLeft = "auto"

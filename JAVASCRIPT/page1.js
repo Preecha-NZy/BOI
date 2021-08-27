@@ -32,12 +32,9 @@ function editRequest() {
     data.editComment = editData[i]['รายละเอียด']
     data.editTimes = editData[i]['แก้ครังที่']
     data.editStatus = editData[i]['สถานะ']
-    console.log(JSON.stringify(data, null, 4))
     redirectPost('editRequest.php', data)
 }
-
 function add_companyName(name, number) {
-    console.log(name)
     const selected = document.getElementById('companyName')
     let opt = document.createElement('option');
     opt.setAttribute('id', `${number}`)

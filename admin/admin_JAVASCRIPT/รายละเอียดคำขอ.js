@@ -27,7 +27,6 @@ function checkRequest() {
     name.fname = Fname
     name.lname = Lname
     name.position = Position
-    name.position = Position
     name.doc_no = Doc_no
     name.assignee = document.getElementById('ผู้ยื่นคำขอ').innerHTML
     name.status = document.getElementById('สถานะ').innerHTML
@@ -87,6 +86,7 @@ function changeYear(dateTime) {
 
 
 function receiveRequest() {
+    console.log(status)
     if (status === 'รอยืนยันคำขอ') {
         let data = new FormData()
         let date = getDate()

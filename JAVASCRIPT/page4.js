@@ -532,9 +532,9 @@ function addPool_input(start_nb, end_nb) {
     floating[0].appendChild(sup_content)
 
     nb_solar_input.onchange = function () {
-        let capa = document.getElementById('Pvmodult_Floating_Capacity')
-        Solar_cal(capa, nb_solar_input, nb_capa_cal)
-        FloatingSolar_cost()
+      let capa = document.getElementById('Pvmodult_Floating_Capacity')
+      Solar_cal(capa, nb_solar_input, nb_capa_cal)
+      FloatingSolar_cost()
     }
   }
 }
@@ -1726,9 +1726,9 @@ function SendValue() {
     success: function (data) {
       if (data != 'Restart') {
         alert(`${data}`)
-        homePage()
+        // homePage()
       } else {
-        location.reload();
+        // location.reload();
       }
     },
     error: function (xhr, status, error, data) {

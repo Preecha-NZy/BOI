@@ -105,7 +105,7 @@ function addFloatingSolar(floatingSolar) {
     water_detail.innerHTML = `${floatingSolar[0]['water_detail']}`
     pool_area.innerHTML = `${Number.parseFloat(floatingSolar[0]['pool_area']).toFixed(2)} ตารางเมตร`
     floating_area.innerHTML = `${Number.parseFloat(floatingSolar[0]['floating_area']).toFixed(2)} ตารางเมตร`
-    pool_percen.innerHTML = `${floatingSolar[0]['pool_percen']} เปอร์เซ็น`
+    pool_percen.innerHTML = `${Number.parseFloat(floatingSolar[0]['pool_percen']).toFixed(2)} เปอร์เซ็น`
     Pvmodult_Floating_Type.innerHTML = `${floatingSolar[0]['Pvmodult_Type']}`
     Pvmodult_Floating_Model.innerHTML = `${floatingSolar[0]['Pvmodult_Model']}`
     Pvmodult_Floating_Brand.innerHTML = `${floatingSolar[0]['Pvmodult_Brand']}`
@@ -239,12 +239,14 @@ function editRequest() {
     let status = 'ส่งกลับแก้ไข'
     let assignee = Assignee
     let currentDate = getDate()
+    let assignor = `${Fname} ${Lname}`
     form.append('doc_no', doc_no)
     form.append('edit', editArray)
     form.append('info', info)
     form.append('status', status)
     form.append('assignee', assignee)
     form.append('currentDate', currentDate)
+    form.append('assignor', assignor)
     $.ajax({
         type: "POST",
         url: "editRequest.php",

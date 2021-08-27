@@ -119,7 +119,6 @@
                     window.location.href = "/admin/index.php";
                 }
                 const sql1 = JSON.parse(JSON.stringify(<?php echo json_encode($sql1, JSON_PRETTY_PRINT); ?>, null, 4));
-                console.log(sql1)
                 let offset = addRow(sql1['length'], sql1, 'red', 0);
                 const sql2 = JSON.parse(JSON.stringify(<?php echo json_encode($sql2, JSON_PRETTY_PRINT); ?>, null, 4));
                 addRow(sql2['length'], sql2, 'black', offset);

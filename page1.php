@@ -98,10 +98,10 @@
         </div>
     </div>
     <?php
-    include_once('/admin/adminDB.php');
+    include_once('admin/adminDB.php');
     $fetchData = new adminDB();
     $count = $fetchData->fetch_editCount($User_ID);
-    $editData = $fetchData->fetch_edit($User_ID)
+    $editData = $fetchData->fetch_edit($User_ID);
     ?>
     <script>
         const count = JSON.parse(JSON.stringify(<?php echo json_encode($count, JSON_PRETTY_PRINT); ?>, null, 4));

@@ -30,16 +30,15 @@ function insertEdit($doc_no, $edit, $info, $count, $status, $conn)
         die(print_r(sqlsrv_errors(), true));
     }
 }
-function insertTransaction($doc_no, $assigneeName, $status, $date, $conn)
+function insertTransaction($doc_no, $assigneeName, $assignor, $status, $date, $conn)
 {
     $requestDate = get_requestDate($doc_no, $conn);
-    $assignorName = get_assignorName($doc_no, $conn, $status);
     $requestNumber = 'E' . $doc_no;
     $receiveDate = get_receiveDate($doc_no, $conn);
     $sql = "insert into ประวัติธุกรรม values(?,?,?,?,?,?,?,?,?,?)";
     $params = array(
         $doc_no, $requestNumber, $requestDate,
-        $assignorName, $assigneeName, '7.1.1.2',
+        $assignor, $assigneeName, '7.1.1.2',
         $status, " ", $receiveDate, $date
     );
     $r_data = sqlsrv_query($conn, $sql, $params);
@@ -48,7 +47,7 @@ function insertTransaction($doc_no, $assigneeName, $status, $date, $conn)
         echo "ERROR 24 : #";
         die(print_r(sqlsrv_errors(), true));
     } else {
-        update_currentTransaction($doc_no, $assigneeName, $assignorName, $date, $status, $conn);
+        update_currentTransaction($doc_no, $assigneeName, $assignor, $date, $status, $conn);
     }
 }
 
@@ -104,6 +103,7 @@ $info = $_POST['info'];
 $status = $_POST['status'];
 $count = countEdit($doc_no, $conn);
 $assignee = $_POST['assignee'];
+$assignor = $_POST['assignor'];
 $date = $_POST['currentDate'];
-insertTransaction($doc_no, $assignee, $status, $date, $conn);
+insertTransaction($doc_no, $assignee, $assignor,$status, $date, $conn);
 insertEdit($doc_no, $edit, $info, $count, $status, $conn);

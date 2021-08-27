@@ -240,12 +240,13 @@ h4 {
 }
 
 .edit-content.active {
+    padding: 15px;
     margin-top: 15px;
     position: relative;
     display: block;
     z-index: 10;
     background-color: white;
-    height: 300px;
+    height: fit-content;
 }
 
 input[type=checkbox] {

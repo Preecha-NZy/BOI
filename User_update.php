@@ -328,6 +328,22 @@ function updateEditHistory($doc_no, $conn) {
     }
 }
 
+function deleteESA($ID, $conn) {
+    $sql = "UPDATE Plans SET ESA_ID = null";
+    $r_data = sqlsrv_query($conn, $sql);
+    if ($r_data === false) {
+        echo "ERROR 24 : #";
+        die(print_r(sqlsrv_errors(), true));
+    }  
+
+    $sql = "delete ESA where ESA_ID =  '".$ID."'";
+    $r_data = sqlsrv_query($conn, $sql);
+    if ($r_data === false) {
+        echo "ERROR 25 : #";
+        die(print_r(sqlsrv_errors(), true));
+    }  
+}
+
 function fetch_editCount($doc_no, $conn)
 {
     $count = 0;
@@ -356,6 +372,7 @@ function update_DOCUMENT($Doc_no, $Product_Doc, $Roof_Doc, $Farm_Doc, $Floating_
 
 function fetch_productID($doc_no, $conn)
 {
+
     $ID = [];
     $i = 0;
     $sql = "select Product_id from Product_Detail where exists (
@@ -566,6 +583,37 @@ function fetch_requestID($doc_no, $conn)
     return $ID[0]['ID'];
 }
 
+function insert_ESA($doc_no, $ID, $Name, $Consult, $Study, $Complete, $conn)
+{
+    $sql = "SELECT Doc_no FROM Solar_Request where Doc_no = '".$doc_no."'";
+    $stmt = sqlsrv_query($conn, $sql);
+    if ($stmt === false) {
+        echo "ERROR 24 : #";
+        die(print_r(sqlsrv_errors(), true));
+    }
+    $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_NUMERIC);
+    $numsrt = substr($row[0], -3);
+    $ESA_ID = $ID. $numsrt;
+
+    $sql = "INSERT INTO ESA VALUES (?,?,?,?,?)";
+    $params = array($ESA_ID, $Name, $Consult, $Study, $Complete);
+    $r_data = sqlsrv_query($conn, $sql, $params);
+    if ($r_data === false) {
+        echo "ERROR 99 : #";
+        die(print_r(sqlsrv_errors(), true));
+    }
+
+    $sql = "update Plans set ESA_ID = ? WHERE Plan_ID = (select  Plans_ID  from Solar_Request WHERE Doc_no = '".$doc_no."')";
+    $params = array($ESA_ID);
+    $r_data = sqlsrv_query($conn, $sql, $params);
+
+    if ($r_data === false) {
+        echo "ERROR 100 : #";
+        die(print_r(sqlsrv_errors(), true));
+    }
+}
+
+
 $name = $_POST['Name'];
 $doc_no = $_POST['doc_no'];
 $status = 'รอยืนยันคำขอ';
@@ -586,6 +634,7 @@ $System_Installation_Plan_ID = fetch_sipID($doc_no, $conn);
 $ESA_ID = fetch_esaID($doc_no, $conn);
 $Request_Number = fetch_requestID($doc_no, $conn);
 $count = 0;
+
 
 $Product_detail = json_decode($_POST['Product_detail'], true);
 if (!is_null($Product_detail)) {
@@ -642,7 +691,6 @@ if (!is_null($Rooftop_Inverter)) {
     $Pvmodult_Sum = $Rooftop_Inverter['Sum'];
     update_Rooftop_Inverter($Inverter_Roof_ID, $Pvmodult_Model, $Pvmodult_Brand, $Pvmodult_Country, $Pvmodult_Capacity, $Pvmodult_Amount, $Pvmodult_Cost, $Pvmodult_Sum, $conn);
     $count = $count + 1;
-    // echo "Rooftop_Inverter\n";
 }
 
 $Farm_Solar = json_decode($_POST['Farm_Solar'], true);
@@ -793,8 +841,6 @@ if (!is_null($Investment_Detail)) {
 }
 
 
-#SELECT YY-MMMM
-#SELECT convert(varchar(7), column_name, 126)  from table_name ;
 $System_installation_plan = json_decode($_POST['System_installation_plan'], true);
 if (!is_null($System_installation_plan)) {
     $Survey = $System_installation_plan['Survey'] . "-01";
@@ -812,11 +858,18 @@ if (!is_null($ESA)) {
     $Consult = $ESA['Consult'] . "-01";
     $Study = $ESA['Study'] . "-01";
     $Complete = $ESA['Complete'] . "-01";
-    update_ESA($ESA_ID, $Name, $Consult, $Study, $Complete, $conn);
+    if (is_null($ESA_ID)) {
+        insert_ESA($doc_no, $ESA['ID'], $Name, $Consult, $Study, $Complete, $conn);
+    }
+    else {
+        update_ESA($ESA_ID, $Name, $Consult, $Study, $Complete, $conn);
+    }
     $count = $count + 1;
 }
 
-
+if (!is_null($_POST['deleteESA'])) {
+    deleteESA($ESA_ID, $conn);
+}
 
 insertTransaction($doc_no, $Request_Number, $date, $conn);
 updateEditHistory($doc_no, $conn);
@@ -827,9 +880,3 @@ if ($count == 0) {
 } else {
     echo "แก้ไขคำขอเสร็จสิ้น";
 }
-#----------------------------------------------------------
-// $pizza  = "piece 1,piece 2,piece 3,piece 4,piece 5,piece 6";
-// $pieces = explode(",", $pizza);
-// echo $pieces[0] . "\n"; // piece1
-// echo $pieces[1] . "\n"; // piece2
-#----------------------------------------------------------

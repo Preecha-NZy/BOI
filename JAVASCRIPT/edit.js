@@ -24,8 +24,9 @@ var Solar_Request = {}
 var System_installation_plan = {}
 var Tools = {}
 var finish = true
-
-
+var esaCount = 0
+var esaIsDisplay = false
+var haveESABefore = false
 
 function rad4Checked() {
   let roof_type = document.getElementById("Pvmodult_Roof_Type4");
@@ -110,14 +111,20 @@ function Solar_cal(capa, solar_nb, solar_cal) {
   Project_Total.value = Number.parseFloat(total_capa).toFixed(4)
   const Check_capa = (capa) => capa > 1;
   if (capa_array.some(Check_capa)) {
-    ESA[0].style['pointer-events'] = 'auto';
+    ESA[0].style.display = 'block';
+    esaIsDisplay = true
+    if(!haveESABefore) {
+      esaCount += 1
+      ESA[0].classList.add('active')
+      if (!split.includes('แผนการจัดทำรายงานเกี่ยวกับการศึกษามาตรการป้องกัน')) {
+        split[split.length] = 'แผนการจัดทำรายงานเกี่ยวกับการศึกษามาตรการป้องกัน'
+      }
+    }
   }
   else {
-    ESA[0].style['pointer-events'] = 'none';
+    esaIsDisplay = false
+    ESA[0].style.display = 'none';
     let inputs = ESA[0].querySelectorAll('input')
-    inputs.forEach(input => {
-      input.value = ""
-    })
   }
 }
 
@@ -154,13 +161,7 @@ function RoofSolar_cal() {
   let RS_nb_solar = document.getElementById('Pvmodult_Roof_Amount')
   let RS_cal = document.getElementById('Pvmodult_Roof_Sum')
   RoofSolar_cost()
-  if (RS_capa.value > 500) {
-    roof_capa.style.display = 'flex'
-  }
-  else {
-    roof_capa.style.display = 'none'
-    Solar_cal(RS_capa, RS_nb_solar, RS_cal)
-  }
+  Solar_cal(RS_capa, RS_nb_solar, RS_cal)
 }
 
 function RoofSolar_cost() {
@@ -197,13 +198,7 @@ function GroundSolar_cal() {
   let GS_nb_solar = document.getElementById('Pvmodult_Farm_Amount')
   let GS_cal = document.getElementById('Pvmodult_Farm_Sum')
   GroundSolar_cost()
-  if (GS_capa.value > 500) {
-    farm_capa.style.display = 'flex'
-  }
-  else {
-    farm_capa.style.display = 'none'
-    Solar_cal(GS_capa, GS_nb_solar, GS_cal)
-  }
+  Solar_cal(GS_capa, GS_nb_solar, GS_cal)
 }
 
 function GroundSolar_cost() {
@@ -246,19 +241,17 @@ function FloatingArea_cal() {
 function FloatingSolar_cal() {
   let pool_capacity = document.getElementById('Pvmodult_Floating_Capacity')
   let nb_solar = document.querySelectorAll('.new-input')
-  if (pool_capacity.value > 500) {
-    floating_capa.style.display = 'flex'
-  }
-  else {
-    floating_capa.style.display = 'none'
-    if (nb_solar.length != 0) {
-      for (let i = 1; i <= nb_solar.length; i++) {
-        let input_nb = document.getElementById(`Pvmodult_Floating_Amount_${i}`)
-        let capa_cal = document.getElementById(`Pvmodult_Floating_Sum_${i}`)
-        Solar_cal(pool_capacity, input_nb, capa_cal)
-      }
+  if (nb_solar.length != 0) {
+    for (let i = 1; i <= nb_solar.length; i++) {
+      let input_nb = document.getElementById(`Pvmodult_Floating_Amount_${i}`)
+      let capa_cal = document.getElementById(`Pvmodult_Floating_Sum_${i}`)
+      Solar_cal(pool_capacity, input_nb, capa_cal)
     }
   }
+  else {
+    Solar_cal(pool_capacity, 0, 0)
+  }
+  FloatingSolar_cost()
 }
 
 function FloatingSolar_cost() {
@@ -384,23 +377,20 @@ function ChangeNumFloating_input() {
   let floating = document.getElementsByClassName('floating-content')
   let nb_of_solar = document.getElementById('Floating_Amount')
   let nb_solar = document.querySelectorAll('.new-input')
-  console.log(nb_of_solar.value)
-  console.log(nb_solar.length)
   if (nb_solar.length == 0) {
     addPool_input(1, nb_of_solar.value)
   }
   else if (nb_of_solar.value < nb_solar.length) {
     for (let i = nb_solar.length; i > nb_of_solar.value; i--) {
-      console.log(i)
-      // let delete_input = document.getElementById(`${i}`)
-      // delete_input.parentElement.remove()
+      let delete_input = document.getElementById(`${i}`)
+      delete_input.parentElement.remove()
     }
   }
   else {
     addPool_input(nb_solar.length + 1, nb_of_solar.value)
   }
-  // FloatingSolar_cal()
-  // FloatingSolar_cost()
+  FloatingSolar_cal()
+  FloatingSolar_cost()
 }
 
 function addPool_input(start_nb, end_nb) {
@@ -467,17 +457,14 @@ function addPool_input(start_nb, end_nb) {
     floating[0].appendChild(sup_content)
 
     nb_solar_input.onchange = function () {
-      if (Pvmodult_Floating_Capacity.value <= 500) {
-        let capa = document.getElementById('Pvmodult_Floating_Capacity')
-        Solar_cal(capa, nb_solar_input, nb_capa_cal)
-        FloatingSolar_cost()
-      }
+      let capa = document.getElementById('Pvmodult_Floating_Capacity')
+      Solar_cal(capa, nb_solar_input, nb_capa_cal)
+      FloatingSolar_cost()
     }
   }
 }
 
 function submit() {
-  let count = 0
   const keys = [];
   for (const key of form.keys()) {
     keys.push(key);
@@ -485,94 +472,72 @@ function submit() {
   for (const idx in keys) {
     form.delete(keys[idx]);
   }
-  Rooftop_Solar = {}
-  Rooftop_Inverter = {}
-  Farm_Solar = {}
-  Farm_Inverter = {}
-  Floating_Solar = []
-  Floating_Inverter = {}
-  Investment_Detail = {}
-  Location_Rooftop = {}
-  Location_Farm = {}
-  Location_Floating = {}
-  Equipment = []
-  ESA = {}
-  ESS = {}
-  Plans = {}
-  Product_detail = {}
-  Solar_Request = {}
-  System_installation_plan = {}
-  Tools = {}
-
   for (let i = 0; i < split.length; i++) {
     if (split[i] == 'รายการบนหลังคา') {
       let Roof_valid = RooftopSolar_insert()
       Tools_insert()
+      InvestmentDetail_insert()
       if (Roof_valid == false || Roof_valid == null) {
-        count += 1
         break;
       }
     }
     else if (split[i] == 'รายการบนพื้นดิน') {
       let Farm_valid = FarmSolar_insert()
       Tools_insert()
+      InvestmentDetail_insert()
       if (Farm_valid == false || Farm_valid == null) {
-        count += 1
         break;
       }
     }
     else if (split[i] == 'รายการบนทุ่นลอยน้ำ') {
       let Floating_valid = FloatingSolar_insert()
       Tools_insert()
+      InvestmentDetail_insert()
       if (Floating_valid == false || Floating_valid == null) {
-        count += 1
         break;
       }
     }
     else if (split[i] == 'ข้อมูลโครงการและรายละเอียดสัญญาการซื้อขาย') {
       let productValid = ProductDetail_insert()
       if (productValid == false || productValid == null) {
-        count += 1
         break;
       }
     }
     else if (split[i] == 'ระบบกักเก็บพลังงาน') {
       let essValid = ESS_insert()
       if (essValid == false || essValid == null) {
-        count += 1
         break;
       }
     }
     else if (split[i] == 'รายละเอียดอุปกรณ์อื่นๆ') {
       let ectValid = Equipment_insert()
       if (ectValid == false || ectValid == null) {
-        count += 1
         break;
       }
     }
     else if (split[i] == 'รายละเอียดการลงทุนในการออกแบบและติดตั้ง') {
       let ivmValid = InvestmentDetail_insert()
       if (ivmValid == false || ivmValid == null) {
-        count += 1
         break;
       }
     }
     else if (split[i] == 'แผนการดำเนินงาน') {
       let sysValid = SYSPlan_insert()
       if (sysValid == false || sysValid == null) {
-        count += 1
         break;
       }
     }
     else if (split[i] == 'แผนการจัดทำรายงานเกี่ยวกับการศึกษามาตรการป้องกัน') {
       let esaValid = ESA_insert()
       if (esaValid == false || esaValid == null) {
-        count += 1
         break;
       }
     }
   }
 
+  if (!esaIsDisplay && haveESABefore) {
+    form.append('deleteESA', 'yes')
+  }
   if (finish) {
     // console.log(JSON.stringify(Product_detail, null, 4))
     // console.log(JSON.stringify(Rooftop_Solar, null, 4))
@@ -597,7 +562,6 @@ function submit() {
 }
 
 function ProductDetail_insert() {
-  Product_detail.ID = `PDD${thai_year}`
   Product_detail.Company = document.getElementById('Company').value;
   Product_detail.Product_Name = document.getElementById('Product_Name').value;
   Product_detail.Contract_Name = document.getElementById('Contract_Name').value;
@@ -611,6 +575,7 @@ function ProductDetail_insert() {
   Product_detail.Location_Province = document.getElementById('Location_Province').value;
   Product_detail.Location_Page = document.getElementById('Location_Page').value;
   form.append('Product_detail', JSON.stringify(Product_detail, null, 4));
+  return true
 }
 
 function RooftopSolar_insert() {
@@ -686,7 +651,7 @@ function RooftopSolar_insert() {
     return;
   }
 
-  if (document.getElementById('Pvmodult_Roof_Capacity').value != '' && parseFloat(document.getElementById('Pvmodult_Roof_Capacity').value) <= 500)
+  if (document.getElementById('Pvmodult_Roof_Capacity').value != '')
     Rooftop_Solar.Capacity = parseFloat(document.getElementById('Pvmodult_Roof_Capacity').value);
   else {
     document.getElementById('Pvmodult_Roof_Capacity').value = ''
@@ -791,7 +756,7 @@ function FarmSolar_insert() {
     return;
   }
 
-  if (document.getElementById('Pvmodult_Farm_Capacity').value != '' && parseFloat(document.getElementById('Pvmodult_Farm_Capacity').value) <= 500)
+  if (document.getElementById('Pvmodult_Farm_Capacity').value != '')
     Farm_Solar.Capacity = parseFloat(document.getElementById('Pvmodult_Farm_Capacity').value);
   else {
     document.getElementById('Pvmodult_Farm_Capacity').value = ''
@@ -964,7 +929,7 @@ function FloatingSolar_insert() {
         return;
       }
 
-      if (document.getElementById('Pvmodult_Floating_Capacity').value != '' && parseFloat(document.getElementById('Pvmodult_Floating_Capacity').value) <= 500)
+      if (document.getElementById('Pvmodult_Floating_Capacity').value != '')
         Solar.Capacity = parseFloat(document.getElementById('Pvmodult_Floating_Capacity').value)
       else {
         document.getElementById('Pvmodult_Floating_Capacity').value = ""
@@ -1350,13 +1315,13 @@ function Equipment_insert() {
 }
 
 function Tools_insert() {
-  Tools.ID = `T${thai_year}`
-  Tools.Product_ID = Product_detail.ID
-  Tools.Location_Rooftop_ID = Location_Rooftop.Location_ID
-  Tools.Location_Farm_ID = Location_Farm.Location_ID
-  Tools.Location_Floating_ID = Location_Floating.Location_ID
-  Tools.ESS_ID = ESS.ID
-  Tools.Equipment_ID = `EQP${thai_year}`
+  // Tools.ID = `T${thai_year}`
+  // Tools.Product_ID = Product_detail.ID
+  // Tools.Location_Rooftop_ID = Location_Rooftop.Location_ID
+  // Tools.Location_Farm_ID = Location_Farm.Location_ID
+  // Tools.Location_Floating_ID = Location_Floating.Location_ID
+  // Tools.ESS_ID = ESS.ID
+  // Tools.Equipment_ID = `EQP${thai_year}`
   Tools.Pvmodult_Total = parseFloat(Project_Total.value)
   Tools.Inverter_Total = parseFloat(Project_ivt_Total.value)
   form.append('Tools', JSON.stringify(Tools, null, 4))
@@ -1650,7 +1615,7 @@ function addProductDetail(addProductDetail) {
   Contract_Name_Page.value = `${addProductDetail[0]['Contract_Name_Page']}`
   Capacity.value = `${Number.parseFloat(addProductDetail[0]['Capacity']).toFixed(4)}`
   Capacity_Page.value = `${addProductDetail[0]['Capacity_Page']}`
-  Location_No.value = `เลขที่ ${addProductDetail[0]['Location_No']}`
+  Location_No.value = `${addProductDetail[0]['Location_No']}`
   Location_Street.value = `${productDetail[0]['Location_Street']}`
   Location_Subdistrict.value = `${addProductDetail[0]['Location_Subdistrict']}`
   Location_district.value = `${addProductDetail[0]['Location_district']}`
@@ -1693,8 +1658,8 @@ function addRoofSolar(rooftopSolar) {
   Pvmodult_Roof_Country.innerHTML = rooftopSolar[0]['Pvmodult_Country']
   Pvmodult_Roof_Capacity.value = rooftopSolar[0]['Pvmodult_Capacity']
   Pvmodult_Roof_Amount.value = rooftopSolar[0]['Pvmodult_Amount']
-  Pvmodult_Roof_Cost.value = Number.parseFloat(rooftopSolar[0]['Pvmodult_Cost'].toFixed(2))
-  Pvmodult_Roof_Sum.value = Number.parseFloat(rooftopSolar[0]['Pvmodult_Sum'].toFixed(4))
+  Pvmodult_Roof_Cost.value = `${Number.parseFloat(rooftopSolar[0]['Pvmodult_Cost']).toFixed(2)}`
+  Pvmodult_Roof_Sum.value = `${Number.parseFloat(rooftopSolar[0]['Pvmodult_Sum']).toFixed(4)}`
 
 }
 
@@ -1726,7 +1691,6 @@ function addFarmSolar(farmSolar) {
     }
   }
   if (farmPVMCount == 0) {
-    console.log(farmSolar[0]['Pvmodult_Type'])
     Pvmodult_Farm_Type4.checked = true
     Pvmodult_Farm_Type_etc.value = (farmSolar[0]['Pvmodult_Type'])
     rad4Checked()
@@ -1799,7 +1763,7 @@ function addFloatingSolar(floatingSolar) {
   }
   Pvmodult_Floating_Model.value = `${floatingSolar[0]['Pvmodult_Model']}`
   Pvmodult_Floating_Brand.value = `${floatingSolar[0]['Pvmodult_Brand']}`
-  Pvmodult_Floating_Country_input.innerHTML = `${floatingSolar[0]['Pvmodult_Country']}`
+  Pvmodult_Floating_Country.innerHTML = `${floatingSolar[0]['Pvmodult_Country']}`
   Pvmodult_Floating_Capacity.value = `${floatingSolar[0]['Pvmodult_Capacity']}`
   Pvmodult_Floating_Cost.value = `${Number.parseFloat(floatingSolar[0]['Pvmodult_Cost']).toFixed(2)}`
   for (let i = 0; i < floatingSolar['length']; i++) {
@@ -1813,7 +1777,7 @@ function addFloatingSolar(floatingSolar) {
     let surfix = document.createElement('label')
     sup_content.setAttribute('class', 'sup-content')
     sup_title.setAttribute('class', 'sup-title')
-    sup_title.setAttribute('id', `${i+1}`)
+    sup_title.setAttribute('id', `${i + 1}`)
     col_sub_content.setAttribute('class', 'col-sub-content')
     sub_titel.setAttribute('class', 'sub-title')
     row_sub_content.setAttribute('class', ' row-sub-content')
@@ -1821,7 +1785,7 @@ function addFloatingSolar(floatingSolar) {
     nb_solar_input.setAttribute('type', 'number')
     nb_solar_input.setAttribute('class', 'new-input')
     surfix.setAttribute('class', 'surfix')
-    nb_solar_input.setAttribute('id', `Pvmodult_Floating_Amount_${i+1}`)
+    nb_solar_input.setAttribute('id', `Pvmodult_Floating_Amount_${i + 1}`)
     nb_solar_input.required = true
     nb_solar_input.value = `${floatingSolar[i]['Pvmodult_Amount']}`
     sup_title.innerHTML = `อ่างเก็บน้ำที่ ${i + 1}`
@@ -1844,7 +1808,7 @@ function addFloatingSolar(floatingSolar) {
     ip_sf.setAttribute('class', 'ip-sf')
     nb_capa_cal.setAttribute('type', 'number')
     surfix.setAttribute('class', 'surfix')
-    nb_capa_cal.setAttribute('id', `Pvmodult_Floating_Sum_${i+1}`)
+    nb_capa_cal.setAttribute('id', `Pvmodult_Floating_Sum_${i + 1}`)
     nb_capa_cal.setAttribute('class', 'total-capa')
     nb_capa_cal.disabled = true
     nb_capa_cal.value = `${Number(floatingSolar[i]['Pvmodult_Sum']).toFixed(4)}`
@@ -1859,6 +1823,11 @@ function addFloatingSolar(floatingSolar) {
     sup_content.appendChild(sup_title)
     sup_content.appendChild(col_sub_content)
     floatingDiv[0].appendChild(sup_content)
+    nb_solar_input.onchange = function () {
+      let capa = document.getElementById('Pvmodult_Floating_Capacity')
+      Solar_cal(capa, nb_solar_input, nb_capa_cal)
+      FloatingSolar_cost()
+    }
   }
 }
 
@@ -1941,6 +1910,7 @@ function addESA(esa) {
   ESA_Consult.value = `${change_dateFormat(esa[0]['ESA_Consult'])}`
   ESA_Study.value = `${change_dateFormat(esa[0]['ESA_Study'])}`
   ESA_Complete.value = `${change_dateFormat(esa[0]['ESA_Complete'])}`
+  haveESABefore = true
 }
 
 function change_dateFormat(date) {

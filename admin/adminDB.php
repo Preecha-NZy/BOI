@@ -40,7 +40,7 @@ class adminDB
         $sql = "select doc_no, เลขคำขอ, 
                 format(วันที่รับคำขอ, 'dd/MM/yyyy') as วันที่รับคำขอ, 
                 format(วันที่สิ้นสุด, 'dd/MM/yyyy') as วันที่สิ้นสุด, 
-                ประเภทกิจการ, ผู้ยื่นคำขอ, สถานะ 
+                ประเภทกิจการ, ผู้ยื่นคำขอ, สถานะ, ชื่อผู้มอบหมาย
                 from ธุรกรรมล่าสุด where ชื่อผู้รับมอบหมาย = '" . $Fname . " " . $Lname . "' order by วันที่ปรับปรุงล่าสุด DESC";
 
         $result = sqlsrv_query($this->dbcon, $sql);
@@ -53,6 +53,7 @@ class adminDB
             $requestHistory[$i]['ประเภทกิจการ'] = $row[$keys[4]];
             $requestHistory[$i]['ผู้ยื่นคำขอ'] = $row[$keys[5]];
             $requestHistory[$i]['สถานะ'] = $row[$keys[6]];
+            $requestHistory[$i]['ชื่อผู้มอบหมาย'] = $row[$keys[7]];
             $i += 1;
         }
         return $requestHistory;
@@ -253,7 +254,7 @@ class adminDB
     {
         $tools = [];
         $i = 0;
-        $sql = "select * from Tools where Product_id = '" . $ProducDetail_ID . "'";
+        $sql = "select * from Tools where Product_ID = '" . $ProducDetail_ID . "'";
         $result = sqlsrv_query($this->dbcon, $sql);
         while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
             $tools[$i]['Tools_ID'] = $row['Tools_ID'];

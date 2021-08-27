@@ -46,7 +46,7 @@ function addRow(rowLength, data, color, offset) {
     let i;
     let j = 0
     for (i = 0; i < rowLength; i++) {
-        if(data[i]['สถานะ'] == 'อยู่ระหว่างตรวจสอบแก้ไข' && color == 'red') {
+        if(data[i]['สถานะ'] == 'อยู่ระหว่างตรวจสอบแก้ไข' && data[i]['ชื่อผู้มอบหมาย'] != data[i]['ผู้ยื่นคำขอ']) {
             color = 'black'
             j += 1
         }
